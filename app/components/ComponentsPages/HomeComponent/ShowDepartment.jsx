@@ -27,7 +27,7 @@ const ShowDepartment = () => {
                         <LuCalculator />
                     </div>
                     <div>
-                        <p className="text-[15px] font-medium">School of Engineering and Technology</p>
+                        <p className="text-[15px] font-medium">College of Arts and Sciences</p>
                     </div>
                     <div>
                         <MdArrowForwardIos />
@@ -40,7 +40,7 @@ const ShowDepartment = () => {
                         <LuCalculator />
                     </div>
                     <div>
-                        <p className="text-[15px] font-medium">School of Engineering and Technology</p>
+                        <p className="text-[15px] font-medium">School of Bussiness and Management</p>
                     </div>
                     <div>
                         <MdArrowForwardIos />
@@ -52,7 +52,7 @@ const ShowDepartment = () => {
                         <LuCalculator />
                     </div>
                     <div>
-                        <p className="text-[15px] font-medium">School of Engineering and Technology</p>
+                        <p className="text-[15px] font-medium">School of Education</p>
                     </div>
                     <div>
                         <MdArrowForwardIos />
@@ -64,7 +64,7 @@ const ShowDepartment = () => {
                         <LuCalculator />
                     </div>
                     <div>
-                        <p className="text-[15px] font-medium">School of Engineering and Technology</p>
+                        <p className="text-[15px] font-medium">School of Life Sciences</p>
                     </div>
                     <div>
                         <MdArrowForwardIos />

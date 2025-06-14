@@ -10,10 +10,10 @@ const CampusFacilities = () => {
 
 
                 <div className="cart grid grid-cols-4 gap-10 pt-9">
-                    {[0, 1, 2,4].map((data, index) => {
+                    {[0, 1, 2, 4].map((data, index) => {
                         return (
-                            <div className='h-[500px] rounded-3xl shadow-2xl' key={index}>
-                                <div className='h-1/2 rounded-tl-3xl rounded-tr-3xl'>
+                            <div className='h-full rounded-3xl shadow-2xl' key={index}>
+                                <div className='rounded-tl-3xl rounded-tr-3xl'>
                                     <img src="image 6.png" className='w-full h-full' alt="" />
                                 </div>
                                 <div className='px-4 py-2'>
@@ -39,12 +39,12 @@ const CampusFacilities = () => {
 
                 </div>
 
-                                <div className="flex items-center text-center  justify-center mt-12 text-[#0E7490] font-medium cursor-pointer">
-                                    <p>View More</p>
-                                    <div>
-                                        <IoIosArrowRoundForward className="text-2xl"/>
-                                    </div>
-                                </div>
+                <div className="flex items-center text-center  justify-center mt-12 text-[#0E7490] font-medium cursor-pointer">
+                    <p>View More</p>
+                    <div>
+                        <IoIosArrowRoundForward className="text-2xl" />
+                    </div>
+                </div>
             </div>
         </div>
     )

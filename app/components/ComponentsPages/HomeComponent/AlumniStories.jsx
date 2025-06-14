@@ -11,11 +11,11 @@ const AlumniStories = () => {
                 <div className="cart grid grid-cols-4 gap-10 pt-9">
                     {[0, 1, 2, 4].map((data, index) => {
                         return (
-                            <div className='h-[500px] rounded-3xl shadow-2xl' key={index}>
-                                <div className='h-1/2 rounded-tl-3xl rounded-tr-3xl'>
+                            <div className='h-full rounded-3xl shadow-2xl' key={index}>
+                                <div className='rounded-tl-3xl rounded-tr-3xl'>
                                     <img src="image 6.png" className='w-full h-full' alt="" />
                                 </div>
-                                <div className='px-4 py-3 flex flex-col justify-between '>
+                                <div className='px-4 py-3 text-start'>
                                     <h4 className='font-bold text-xl'>Main Library</h4>
                                     <p className="py-6">Class of 2005</p>
                                     <p>My experience in the computer science program provided the foundation for my career in technology. The hands-on projects and internship opportunities were invaluable."</p>
