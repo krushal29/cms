@@ -8,6 +8,8 @@ import News from "../../components/ComponentsPages/HomeComponent/News"
 import ShowDepartment from "../../components/ComponentsPages/HomeComponent/ShowDepartment"
 import Vision from "../../components/ComponentsPages/HomeComponent/Vision"
 import Navbar from "../../components/ComponentsPages/HomeComponent/Navbar"
+import ApplyUploadDocumentPopup from "../../components/ComponentsPages/HomeComponent/ApplyUploadDocumentPopup"
+
 
 
 const HomePage = () => {

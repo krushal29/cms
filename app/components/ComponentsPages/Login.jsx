@@ -21,7 +21,7 @@ const Login = ({closeHandle}) => {
   }
   return (
     <div className='shadow-2xl flex justify-center h-screen items-center relative'>
-      <div className='bg-card px-5 py-2 rounded-[5px] w-1/4 relative'>
+      <div className='bg-card px-5 py-3 rounded-[5px] w-1/4 relative'>
         <div className='flex justify-between'>
         <h1 className='font-bold text-xl'>Welcome to Grand valley College</h1>
         <p><IoClose  className='cursor-pointer text-xl absolute right-2' onClick={closeHandle}/></p>
