@@ -1,11 +1,10 @@
-import Navbar from "../../components/ComponentsPages/SchoolHomeComponent/Navbar"
 import SchoolAboutUs from "../../components/ComponentsPages/SchoolHomeComponent/SchoolAboutUs"
 import SchoolAchivements from "../../components/ComponentsPages/SchoolHomeComponent/SchoolAchivements"
 import SchoolClubs from "../../components/ComponentsPages/SchoolHomeComponent/SchoolClubs"
 import SchoolEvent from "../../components/ComponentsPages/SchoolHomeComponent/SchoolEvent"
 import SchoolFacilities from "../../components/ComponentsPages/SchoolHomeComponent/SchoolFacilities"
-import SchoolFooter from "../../components/ComponentsPages/SchoolHomeComponent/SchoolFooter"
 import SchoolHeroSection from "../../components/ComponentsPages/SchoolHomeComponent/SchoolHeroSection"
+import SchoolLayout from "../../components/ComponentsPages/SchoolHomeComponent/SchoolLayout"
 import SchoolNews from "../../components/ComponentsPages/SchoolHomeComponent/SchoolNews"
 import SchoolPlacements from "../../components/ComponentsPages/SchoolHomeComponent/SchoolPlacements"
 import SchoolPrograms from "../../components/ComponentsPages/SchoolHomeComponent/SchoolPrograms"
@@ -13,8 +12,7 @@ import SchoolPrograms from "../../components/ComponentsPages/SchoolHomeComponent
 
 const SchoolHomePage = () => {
   return (
-    <div>
-        <Navbar/>
+    <SchoolLayout>
         <SchoolHeroSection/>
         <SchoolAboutUs/>
         <SchoolPrograms/>
@@ -24,8 +22,7 @@ const SchoolHomePage = () => {
         <SchoolPlacements/>
         <SchoolNews/>
         <SchoolEvent/>
-        <SchoolFooter/>
-    </div>
+    </SchoolLayout>
   )
 }
 
