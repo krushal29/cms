@@ -1,11 +1,11 @@
+import DepartmentLayout from "../../components/ComponentsPages/SchoolHomeComponent/DepartmentLayout"
 import SchoolAcademicStructure from "../../components/ComponentsPages/SchoolHomeComponent/SchoolAcademicStructure"
-import SchoolLayout from "../../components/ComponentsPages/SchoolHomeComponent/SchoolLayout"
 
 const SchoolAcademicStructurePage = () => {
   return (
-    <SchoolLayout>
+    <DepartmentLayout>
         <SchoolAcademicStructure/>
-    </SchoolLayout>
+    </DepartmentLayout>
   )
 }
 

@@ -36,20 +36,20 @@ const Obj = [
 
 const SchoolEvent = () => {
    return (
-          <div className=' flex justify-center py-7 bg-background mt-8'>
+          <div className='flex justify-center py-7 bg-background pt-8'>
               <div className='w-[90%]'>
-                  <h1 className="text-center text-3xl font-bold underline">Upcoming Events</h1>
+                  <h1 className="text-center text-[28px] font-medium underline underline-offset-4">Upcoming Events</h1>
                   <p className="text-center pt-2">Join us for these exciting events happening across campus.</p>
   
                   <div className="pt-5">
                       {Obj.map((data, index) => {
                           return (
-                              <div className='flex mt-5' key={index}>
-                                  <div className='w-[70%] rounded-tl-4xl rounded-bl-4xl'>
+                              <div className='flex mt-8  drop-shadow-lg shadow-ring' key={index}>
+                                  <div className='w-[50%] rounded-tl-4xl rounded-bl-4xl'>
                                       <img className='w-full h-full' src={data.image} alt="" />
                                   </div>
-                                  <div className='bg-secondary flex flex-col justify-center px-7'>
-                                      <h4 className='text-xl font-semibold'>{data.Heading}</h4>
+                                  <div className='bg-secondary rounded-tr-4xl rounded-br-4xl py-6 px-5'>
+                                      <h4 className='text-[19px] font-medium'>{data.Heading}</h4>
                                       <p className="flex items-center"><HiLocationMarker /><span className="pl-1">{data.location}</span></p>
                                       <p className='pt-3'>{data.Desc}</p>
                                   </div>
@@ -57,7 +57,7 @@ const SchoolEvent = () => {
                           )
                       })}
                   </div>
-                  <div className="flex items-center text-center  justify-center py-5 text-[#0E7490] font-medium  text-[18px]">
+                  <div className="flex items-center text-center mt-5  justify-center py-5 text-[#0E7490] font-medium  text-[18px]">
                       <p className="cursor-pointer">View More</p>
                       <div>
                           <IoIosArrowRoundForward className="text-2xl" />

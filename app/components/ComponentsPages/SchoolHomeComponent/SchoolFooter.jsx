@@ -6,7 +6,7 @@ const SchoolFooter = () => {
   return (
         <div className="bg-foreground text-white py-4">
             <div className="flex justify-center">
-                <div className="w-[96%] flex justify-between border-b-2 py-5">
+                <div className="w-[95%] flex justify-between border-b-2 py-7 pb-15">
                     <div className="flex flex-col justify-between">
                         <div>
                             <h1 className="text-2xl font-bold">Grand Valley College</h1>
@@ -54,8 +54,8 @@ const SchoolFooter = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center py-3">
-            <div className="w-[96%] flex justify-between ">
+            <div className="flex justify-center py-6">
+            <div className="w-[95%] flex justify-between ">
                 <div>
                     <p>©2025 Grand Valley College. All rights reserved.</p>
                 </div>

@@ -15,12 +15,12 @@ const ApplyNowPopup = ({ closeApplyHandle,nextHandle }) => {
 
     return (
         <div className=" flex justify-center align-middle relative">
-            <div className="w-[35%] my-7 h-[93vh] overflow-y-scroll rounded-bl-[10px] rounded-br-[10px]">
-                <div className="flex justify-between items-center bg-[#d4d4d8] p-2 rounded-tl-[10px] rounded-tr-[10px">
+            <div className="w-[35%] my-7 h-[93vh] overflow-y-scroll rounded-bl-[10px] rounded-br-[10px] drop-shadow-lg shadow-ring">
+                <div className="flex justify-between items-center bg-[#d4d4d8] py-2 px-4 rounded-tl-[10px] rounded-tr-[10px]">
                     <h3 className="font-semibold">Apply to Grand Valley College </h3>
                     <p><IoClose onClick={closeApplyHandle} className="text-2xl cursor-pointer" /></p>
                 </div>
-                <div className=" bg-secondary py-8 px-4 rounded-bl-[10px] rounded-br-[10px]">
+                <div className=" bg-secondary py-8 px-5 rounded-bl-[10px] rounded-br-[10px]">
                     <div className="flex justify-between">
                         <div>
                             <div className="border-4 border-black rounded-3xl"></div>
@@ -53,6 +53,13 @@ const ApplyNowPopup = ({ closeApplyHandle,nextHandle }) => {
 
                     <div className="pt-3">
                         <p>DOB <span className="text-[#DE0D0D] font-semibold">*</span></p>
+                        <input
+                        type="date"
+                        className="w-full pl-3 mt-1 pr-4 py-2 bg-primary-foreground border border-gray-300 rounded-md text-right placeholder:text-left"
+                        placeholder="Select date"
+                        name='Date'
+                        
+                    />
                     </div>
 
                     <div className="pt-3">

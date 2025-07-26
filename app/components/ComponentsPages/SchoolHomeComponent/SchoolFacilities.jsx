@@ -21,16 +21,16 @@ const data=[
 const SchoolFacilities = () => {
   return (
     <div className="flex justify-center pt-8 py-8 bg-secondary">
-      <div className="w-[60%] text-center">
-        <h1 className="text-2xl underline font-medium">Facilities</h1>
-        <p className="pt-2 w-[70%] mx-auto">Explore our state-of-the-art facilities designed to support holistic learning, creativity, and all-round development</p>
-        <div className='grid grid-cols-2 gap-12 py-8'>
+      <div className="w-[70%]">
+        <h1 className="text-[28px] font-bold underline text-center underline-offset-4">Facilities</h1>
+        <p className="pt-2 w-[70%] mx-auto text-center font-medium">Explore our state-of-the-art facilities designed to support holistic learning, creativity, and all-round development</p>
+        <div className='grid grid-cols-2 gap-12 py-15'>
           {data.map((data, index) => (
-            <div key={index} className='bg-background rounded-2xl shadow-2xl'>
-              <div className='bg-[#d4d4d8] rounded-tr-2xl rounded-tl-2xl py-3 font-bold'>
+            <div key={index} className='bg-background rounded-2xl drop-shadow-lg shadow-ring'>
+              <div className='bg-[#d4d4d8] rounded-tr-2xl rounded-tl-2xl py-3 font-semibold text-center text-[18px]'>
                 <h4>{data.title}</h4>
               </div>
-              <div className='p-3 text-start'>
+              <div className='p-5 text-start'>
                 <p>{data.desc}</p>
               </div>
             </div>

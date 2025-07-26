@@ -1,12 +1,12 @@
 
-import SchoolLayout from '../../components/ComponentsPages/SchoolHomeComponent/SchoolLayout'
+import DepartmentLayout from '../../components/ComponentsPages/SchoolHomeComponent/DepartmentLayout'
 import SchoolPlacement from '../../components/ComponentsPages/SchoolHomeComponent/SchoolPlacement'
 
 const SchoolPlacementPage = () => {
   return (
-    <SchoolLayout>
+    <DepartmentLayout>
         <SchoolPlacement/>
-    </SchoolLayout>
+    </DepartmentLayout>
   )
 }
 

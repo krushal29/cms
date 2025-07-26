@@ -19,7 +19,7 @@ const SchoolFees = () => {
   return (
         <div className=" min-h-[45.5vh] flex justify-center py-8">
             <div className="">
-                <h1 className="font-bold text-2xl text-center underline">Fee Structure</h1>
+                <h1 className="font-bold text-2xl text-center underline underline-offset-4">Fee Structure</h1>
                 <p className="pt-3">Explore our transparent and student-friendly fee structure designed to make quality education accessible to all.</p>
                 <div className="pt-8">
                     <Select>

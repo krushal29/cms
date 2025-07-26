@@ -8,18 +8,30 @@ import News from "../../components/ComponentsPages/HomeComponent/News"
 import ShowDepartment from "../../components/ComponentsPages/HomeComponent/ShowDepartment"
 import Vision from "../../components/ComponentsPages/HomeComponent/Vision"
 import Navbar from "../../components/ComponentsPages/HomeComponent/Navbar"
-import ApplyUploadDocumentPopup from "../../components/ComponentsPages/HomeComponent/ApplyUploadDocumentPopup"
+import { useRef } from "react"
 
 
 
 const HomePage = () => {
+  const ref=useRef(null);
+  const AcaRef=useRef(null);
+
+  const onHandleScroll=()=>{
+    ref.current?.scrollIntoView({behavior:"smooth",inline:"nearest"});
+  }
+
+  const onAcaHandleScroll=()=>{
+    AcaRef.current?.scrollIntoView({behavior:"smooth",inline:"nearest"});
+  }
+
+
   return (
     <div>
-        <Navbar/>
+        <Navbar onHandleScroll={onHandleScroll} onAcaHandleScroll={onAcaHandleScroll}/>
         <HeroSection/>
-        <AboutCollege/>
+        <AboutCollege refe={ref}/>
         <Vision/>
-        <ShowDepartment/>
+        <ShowDepartment AcaRef={AcaRef}/>
         <News/>
         <Events/>
         <CampusFacilities/>

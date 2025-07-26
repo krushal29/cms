@@ -1,0 +1,35 @@
+/* 1. Make the calendar grid use flex-wrap */
+.react-calendar__month-view__days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* <<< spacing between date tiles */
+  justify-content: center;
+}
+
+/* 2. Ensure each tile behaves like a square */
+.react-calendar__tile {
+  flex: 1 0 calc(14.28% - 8px); /* 7 columns - gap accounted */
+  max-width: calc(14.28% - 8px);
+  aspect-ratio: 1/1; /* keeps square shape */
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* 3. Override styles for status circles */
+.react-calendar__tile.absent-day,
+.react-calendar__tile.dont-care-day {
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.react-calendar__tile.absent-day {
+  background-color: #f87171 !important;
+}
+
+.react-calendar__tile.dont-care-day {
+  background-color: #60a5fa !important;
+}

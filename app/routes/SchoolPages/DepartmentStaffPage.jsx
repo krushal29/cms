@@ -1,12 +1,11 @@
-import React from 'react'
-import SchoolLayout from '../../components/ComponentsPages/SchoolHomeComponent/SchoolLayout'
 import DepartmentStaff from '../../components/ComponentsPages/SchoolHomeComponent/DepartmentStaff'
+import DepartmentLayout from '../../components/ComponentsPages/SchoolHomeComponent/DepartmentLayout'
 
 const DepartmentStaffPage = () => {
   return (
-    <SchoolLayout>
+    <DepartmentLayout>
       <DepartmentStaff/>
-    </SchoolLayout>
+    </DepartmentLayout>
   )
 }
 
