@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import SchoolAboutUs from "../../components/ComponentsPages/SchoolHomeComponent/SchoolAboutUs"
 import SchoolAchivements from "../../components/ComponentsPages/SchoolHomeComponent/SchoolAchivements"
 import SchoolClubs from "../../components/ComponentsPages/SchoolHomeComponent/SchoolClubs"
@@ -11,17 +12,35 @@ import SchoolPrograms from "../../components/ComponentsPages/SchoolHomeComponent
 
 
 const SchoolHomePage = () => {
+  const aboutRef = useRef(null);
+  const PlacementRef = useRef(null);
+  const ProgramsRef=useRef(null);
+
+  const onClickAboutScroll = () => {
+    aboutRef?.current.scrollIntoView({ behavior: "smooth", inline: "nearest" })
+  }
+
+  const onClickPlacementScroll=()=>{
+    PlacementRef?.current.scrollIntoView({ behavior: "smooth", inline: "nearest" })
+  }
+
+  const onClickProgramScroll=()=>{
+    ProgramsRef?.current.scrollIntoView({behavior:'smooth',inline:'nearest'})
+  }
+
+
+
   return (
-    <SchoolLayout>
-        <SchoolHeroSection/>
-        <SchoolAboutUs/>
-        <SchoolPrograms/>
-        <SchoolFacilities/>
-        <SchoolClubs/>
-        <SchoolAchivements/>
-        <SchoolPlacements/>
-        <SchoolNews/>
-        <SchoolEvent/>
+    <SchoolLayout onClickAboutScroll={onClickAboutScroll} onClickPlacementScroll={onClickPlacementScroll} onClickProgramScroll={onClickProgramScroll}>
+      <SchoolHeroSection />
+      <SchoolAboutUs aboutRef={aboutRef}/>
+      <SchoolPrograms ProgramsRef={ProgramsRef}/>
+      <SchoolFacilities />
+      <SchoolClubs />
+      <SchoolAchivements />
+      <SchoolPlacements PlacementRef={PlacementRef}/>
+      <SchoolNews />
+      <SchoolEvent />
     </SchoolLayout>
   )
 }

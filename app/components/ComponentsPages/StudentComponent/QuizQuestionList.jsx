@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../ui/button'
 import LinearProgress from '@mui/material/LinearProgress';
 import { useNavigate } from 'react-router';
+import { RadioGroup, RadioGroupItem } from "../../ui/radio-group"
+import { Label } from '../../ui/label';
+
+
 const allQuestions = [
   {
     id: 1,
@@ -128,56 +132,59 @@ const allQuestions = [
 
 
 const QuizQuestionList = () => {
-    const [currentQuestion,setCurrentQuestion]=useState(1);
-    const navigate=useNavigate();
-    const totalQuestions=allQuestions.length;
-    const [AnsData,setAnsData]=useState({})
+  const navigate = useNavigate();
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const totalQuestions = allQuestions.length;
+  const [AnsData, setAnsData] = useState({})
+  const [activeQuestion, setActiveQuestion] = useState([allQuestions.map((val) => 'f')]);
 
+  const onActiveQuestion = (index) => {
+    console.log(index);
+  }
 
-    const NextQuestionHandle=()=>{
-        if(currentQuestion<=totalQuestions){
-            setCurrentQuestion(currentQuestion+1);
-        }
+  console.log(activeQuestion);
+
+  const NextQuestionHandle = () => {
+    if (currentQuestion <= totalQuestions) {
+      setCurrentQuestion(currentQuestion + 1);
     }
+  }
 
-    const PreviousQuestionHandle=()=>{
-        setCurrentQuestion(currentQuestion-1);
+  const PreviousQuestionHandle = () => {
+    setCurrentQuestion(currentQuestion - 1);
+  }
+
+  // const StatusProgress=currentQuestion/totalQuestions*100;
+
+  const filterData = allQuestions.find((val, index) => currentQuestion == val.id);
+
+  const OnSelectAns = (e, Question) => {
+    const { value, name } = e.target;
+    try {
+      setAnsData({ ...AnsData, [Question]: value })
+    } catch (e) {
+      console.log(e);
     }
-    
+  }
 
 
-    const StatusProgress=currentQuestion/totalQuestions*100;
-
-    const filterData=allQuestions.find((val,index)=>currentQuestion==val.id);
-    console.log(filterData);
 
 
-    const OnSelectAns=(e,Question)=>{
-      const {value,name}=e.target;
-      try{
-        setAnsData({...AnsData,[Question]:value})
-      }catch(e){
-        console.log(e);
-      }
-    }
+  return (
+
+    <div className="bg-background flex justify-center">
+      <div className="w-[85%] text-center py-13">
+        <h1 className="text-4xl font-bold underline pb-5">Quiz Section</h1>
+
+        <div className="bg-white pb-5 rounded-2xl my-5">
+
+          <div className="bg-black rounded-tl-2xl rounded-tr-2xl ">
+            <h2 className="text-white font-bold text-2xl py-4">Quiz -1 </h2>
+          </div>
 
 
-    console.log(AnsData);
-    return (
-
-        <div className="bg-background flex justify-center">
-            <div className="w-[85%] text-center py-13">
-                <h1 className="text-4xl font-bold underline pb-5">Quiz Section</h1>
-
-                <div className="bg-white pb-5 rounded-2xl my-5">
-
-                    <div className="bg-black rounded-tl-2xl rounded-tr-2xl ">
-                        <h2 className="text-white font-bold text-2xl py-4">Quiz -1 </h2>
-                    </div>
-
-
-                    <div className="py-10  w-[75%] mx-auto">
-                        <div className="py-8">
+          <div className="py-10  w-[75%] mx-auto">
+            {/* <div className="py-8">
                             <div className="flex justify-between">
                                 <p className="font-medium text-[18px]">Quiz Progress</p>
                                 <p className="font-medium text-[18px]">question {currentQuestion} of {totalQuestions} </p>
@@ -185,35 +192,46 @@ const QuizQuestionList = () => {
                             <div className="pt-3">
                                 <LinearProgress variant="determinate" color="primary" value={StatusProgress} sx={{ height: 10, borderRadius: 5 }} />
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="bg-secondary border-2 border-black rounded-2xl my-5 py-5 px-8">
-                            <h1 className="text-start font-medium text-2xl">Question {filterData.id}</h1>
-                            <div className="text-start py-8 border-b border-black">
-                                <p className="font-medium text-[18px]">{filterData.id}. {filterData.Question}</p>
-                                <div className="space-y-5 pt-5">
-                                    {filterData.option.map((option,index)=>(
-                                        <div className="items-center bg-white w-[80%] rounded-[5px] py-2 flex align-middle px-5" key={index}>
 
-                                        <input type="radio" name="ans" value={option} checked={AnsData[filterData.Question]===option} className='cursor-pointer' onChange={(e)=>OnSelectAns(e,filterData.Question)} />
-
-                                        <label className="pl-2 font-medium text-[17px]" htmlFor="">{option}</label>
-                                    </div>
-                                    ))}
-                                </div>
-
-                            </div>
-                            <div className="flex justify-between py-5">
-                                <Button className="text-[17px] py-5 px-8 cursor-pointer" disabled={currentQuestion==1} onClick={PreviousQuestionHandle}>previous</Button>
-                                
-                                {currentQuestion==totalQuestions?<Button onClick={()=>navigate('/quiz-answer')} className="text-[17px] py-5 px-8 cursor-pointer">Submit</Button>:<Button className="text-[17px] py-5 px-8 cursor-pointer" disabled={currentQuestion==totalQuestions} onClick={NextQuestionHandle}>Next</Button>}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {/* filter By Question Number */}
+            <div className='grid grid-cols-10 gap-5 py-5'>
+              {allQuestions.map((val, index) => <Button key={index} className='bg-gray-300 text-black hover:bg-gray-400 cursor-pointer' onClick={() => onActiveQuestion(index)}>{val.id}</Button>)}
             </div>
+
+
+
+            <div className="bg-secondary border-2 border-black rounded-2xl my-5 py-5 px-8">
+              <h1 className="text-start font-medium text-2xl">Question {filterData.id}</h1>
+              <div className="text-start py-8 border-b border-black">
+                <p className="font-medium text-[18px]">{filterData.id}. {filterData.Question}</p>
+                <div className="space-y-5 pt-5">
+                  <RadioGroup>
+                    {filterData.option.map((option, index) => (
+                      <div className="items-center bg-white w-[80%] rounded-[5px] py-2 flex align-middle px-5" key={index}>
+
+                        {/* <input type="radio" name="ans" value={option} checked={AnsData[filterData.Question] === option} className='cursor-pointer' onChange={(e) => OnSelectAns(e, filterData.Question)} /> */}
+                        <RadioGroupItem className="border-black bg-background cursor-pointer" />
+
+                        <Label className="pl-2 font-medium text-[17px]" htmlFor="">{option}</Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </div>
+
+              </div>
+              <div className="flex justify-between py-5">
+                <Button className="text-[17px] py-5 px-8 cursor-pointer" disabled={currentQuestion == 1} onClick={PreviousQuestionHandle}>previous</Button>
+
+                {currentQuestion == totalQuestions ? <Button onClick={() => navigate('/QuizResult')} className="text-[17px] py-5 px-8 cursor-pointer">Submit</Button> : <Button className="text-[17px] py-5 px-8 cursor-pointer" disabled={currentQuestion == totalQuestions} onClick={NextQuestionHandle}>Next</Button>}
+              </div>
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
 export default QuizQuestionList

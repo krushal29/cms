@@ -14,7 +14,7 @@ const PGbranch = ["Computer Science", "Electrical Engineering", "mechanical Engi
 const Diplomabranch = ["Computer Science", "mechanical Engineering"]
 const Phdbranch = ["Computer Science"]
 
-const SchoolPrograms = () => {
+const SchoolPrograms = ({ProgramsRef}) => {
   const navigate = useNavigate();
   const [selectProgram,setSelectProgram]=useState("UG");
 
@@ -41,7 +41,7 @@ const SchoolPrograms = () => {
   }
 
   return (
-    <div className="bg-background flex justify-center pt-8 py-10">
+    <div className="bg-background flex justify-center pt-8 py-10" ref={ProgramsRef}>
       <div className="w-[70%]">
         <h1 className="text-[28px] font-bold underline text-center underline-offset-4">Programs</h1>
         <p className="pt-2 w-[70%] mx-auto text-center font-medium">Discover our wide range of academic programs each designed to foster intellectual growth, practical skills, and career readiness.</p>

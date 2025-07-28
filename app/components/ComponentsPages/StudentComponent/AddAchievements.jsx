@@ -1,7 +1,6 @@
 import { Button } from '../../ui/button'
 import { Input } from '../../ui/input'
 import { IoClose } from "react-icons/io5";
-
 import { Label } from '../../ui/label';
 import { MdOutlineFileUpload } from "react-icons/md";
 import { Textarea } from '../../ui/textarea'
@@ -28,16 +27,24 @@ const AddAchievements = ({onCloseAchievement}) => {
                     <p><IoClose className='cursor-pointer text-2xl absolute right-3 top-4' onClick={onCloseAchievement} /></p>
                 </div>
                 <div className='pt-6'>
-                    <label htmlFor="" className='font-semibold text-[17px]'>Achievement Title <span className='text-[#DE0D0D]'>*</span></label>
-                    <Input className='mt-3 bg-primary-foreground' placeholder='Enter Achievement Title' type='text' />
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Achievement Title <span className='text-[#DE0D0D]'>*</span></Label>
+                    <Input className='mt-3 bg-primary-foreground' placeholder='Enter achievement title' type='text' />
                 </div>
                 <div className='pt-4'>
-                    <label htmlFor="" className='font-semibold text-[17px]'>Achievement Type</label>
-                    <Input className='mt-3 bg-primary-foreground' placeholder='Enter Achievement Type (i.e ,  Academic)' type='text' />
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Achievement Type <span className='text-[#DE0D0D]'>*</span></Label>
+                    <Input className='mt-3 bg-primary-foreground' placeholder='Enter achievement type (e.g., Academic)' type='text' />
+                </div>
+                <div className='pt-4'>
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Location <span className='text-[#DE0D0D]'>*</span></Label>
+                    <Input className='mt-3 bg-primary-foreground' placeholder='Enter Location' type='text' />
+                </div>
+                <div className='pt-4'>
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Organised By <span className='text-[#DE0D0D]'>*</span></Label>
+                    <Input className='mt-3 bg-primary-foreground' placeholder='Enter organizer name' type='text' />
                 </div>
 
                 <div className='pt-4'>
-                    <label htmlFor="" className='font-semibold text-[17px]'>Date</label>
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Date <span className='text-[#DE0D0D]'>*</span></Label>
                     <input
                         type="date"
                         className="w-full pl-3 mt-3 pr-4 py-2 bg-primary-foreground border border-gray-300 rounded-md text-right placeholder:text-left"
@@ -47,13 +54,13 @@ const AddAchievements = ({onCloseAchievement}) => {
 
 
                 <div className='pt-4'>
-                    <label htmlFor="" className='font-semibold text-[17px]'>Provide Reason</label>
-                    <Textarea placeholder='Please Provide Valid reason for your Leave Application' className='mt-3 bg-primary-foreground' />
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Provide Reason <span className='text-[#DE0D0D]'>*</span></Label>
+                    <Textarea placeholder='Please provide details about the achievement' className='mt-3 bg-primary-foreground' />
                 </div>
 
 
                 <div className='pt-4'>
-                    <label htmlFor="" className='font-semibold text-[17px]'>Upload Certificate</label>
+                    <Label htmlFor="" className='font-semibold text-[17px]'>Upload Certificate <span className='text-[#DE0D0D]'>*</span> </Label>
                     <Input type="file" id="GujcetUpload" hidden />
                     <Label htmlFor="GujcetUpload">
                         <div className="border-1 border-dotted border-destructive text-center rounded-[5px] py-3 cursor-pointer mt-2 w-full">

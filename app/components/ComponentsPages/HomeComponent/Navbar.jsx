@@ -47,11 +47,6 @@ const Navbar = ({onHandleScroll,onAcaHandleScroll}) => {
     setNextUploadPopup(false)
   }
 
-
-
-
-  
-
   return (
     <div className="bg-secondary flex justify-center fixed top-0 left-0 right-0 z-2 ">
       <div className="flex justify-between align-middle w-[95%] py-3">

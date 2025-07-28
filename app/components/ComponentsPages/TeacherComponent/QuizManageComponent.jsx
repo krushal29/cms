@@ -9,30 +9,62 @@ import { useState } from "react";
 
 const QuizManageComponent = () => {
     const [QuizData, setQuizData] = useState([
-        {
-            id: 1,
-            SubjectName: "Data Science",
-            QuizNumber: 1,
-            QuizDate: "2/9/2025",
-            TotalQuestion: 20,
-            Duration: 20
-        },
-        {
-            id: 2,
-            SubjectName: "C++",
-            QuizNumber: 2,
-            QuizDate: "2/9/2025",
-            TotalQuestion: 20,
-            Duration: 20
-        },
-         {
-            id: 3,
-            SubjectName: "Web Developer",
-            QuizNumber: 3,
-            QuizDate: "2/9/2025",
-            TotalQuestion: 20,
-            Duration: 40
-        }
+{
+    id: 1,
+    SubjectName: "Data Science",
+    QuizNumber: 1,
+    QuizDate: "02/09/2025",
+    TotalQuestion: 20,
+    Duration: 20,
+  },
+  {
+    id: 2,
+    SubjectName: "C++ Programming",
+    QuizNumber: 2,
+    QuizDate: "05/09/2025",
+    TotalQuestion: 25,
+    Duration: 30,
+  },
+  {
+    id: 3,
+    SubjectName: "Web Development",
+    QuizNumber: 3,
+    QuizDate: "07/09/2025",
+    TotalQuestion: 15,
+    Duration: 20,
+  },
+  {
+    id: 4,
+    SubjectName: "Machine Learning",
+    QuizNumber: 4,
+    QuizDate: "09/09/2025",
+    TotalQuestion: 30,
+    Duration: 45,
+  },
+  {
+    id: 5,
+    SubjectName: "Operating Systems",
+    QuizNumber: 5,
+    QuizDate: "11/09/2025",
+    TotalQuestion: 20,
+    Duration: 25,
+  },
+  {
+    id: 6,
+    SubjectName: "Database Management",
+    QuizNumber: 6,
+    QuizDate: "14/09/2025",
+    TotalQuestion: 20,
+    Duration: 20,
+  },
+  {
+    id: 7,
+    SubjectName: "Cybersecurity Basics",
+    QuizNumber: 7,
+    QuizDate: "16/09/2025",
+    TotalQuestion: 18,
+    Duration: 30,
+  },
     ])
 
     const OnDeleteQuiz = (id) => {

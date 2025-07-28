@@ -39,8 +39,15 @@ export default [
     route('/TeacherMaterials','routes/TeacherPage/TeacherMaterials.jsx'),
     route('/QuizManage','routes/TeacherPage/QuizManage.jsx'),
     route('/TeacherQuizResult','routes/TeacherPage/QuizResult.jsx'),
-    route('/midsemSubmit','routes/TeacherPage/ExamInternalMarksSubmit.jsx')
+    route('/midsemSubmit','routes/TeacherPage/ExamInternalMarksSubmit.jsx'),
+    route('/student-achievement-details','routes/TeacherPage/StudentAchivementDetails.jsx'),
+    route('/quiz-create','routes/TeacherPage/QuizCreatePage.jsx'),
+    route('/quiz-add-question','routes/TeacherPage/QuizAddQuestion.jsx'),
+    route('/attendance-management','routes/TeacherPage/AttendanceManagement.jsx'),
+    
 
+
+    // route('/ExtraPopup','components/ComponentsPages/TeacherComponent/popupComponent/EditMarksInternalVivaPopup.jsx')
 
 
 

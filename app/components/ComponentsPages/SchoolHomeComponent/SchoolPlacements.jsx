@@ -1,8 +1,8 @@
 import { MdKeyboardArrowLeft,MdOutlineKeyboardArrowRight  } from "react-icons/md";
 
-const SchoolPlacements = () => {
+const SchoolPlacements = ({PlacementRef}) => {
   return (
-    <div className="bg-background flex justify-center pt-8 py-8">
+    <div className="bg-background flex justify-center pt-8 py-8" ref={PlacementRef}>
       <div className="w-[75%] text-center">
         <h1 className="text-[28px] font-bold underline text-center underline-offset-4">Placements</h1>
         <p className="pt-2 w-[70%] mx-auto font-medium">Experience the success of our top placements launching students into prestigious universities and leading global careers.</p>

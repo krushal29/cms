@@ -2,10 +2,7 @@ import { useState } from "react"
 import { Button } from "../../ui/button"
 import { GoBook } from "react-icons/go";
 
-
-
-
-const SchoolAboutUs = () => {
+const SchoolAboutUs = ({aboutRef}) => {
   const [vision,setVision]=useState(true);
   const [Mission,setMission]=useState(false);
   const [CoreValue,setCoreValue]=useState(false);
@@ -13,7 +10,7 @@ const SchoolAboutUs = () => {
   const visionHandle=()=>{
       setVision(true);
       setMission(false);
-      setCoreValue(false)
+      setCoreValue(false);
   }
 
   const missionhandle=()=>{
@@ -28,7 +25,7 @@ const SchoolAboutUs = () => {
       setCoreValue(true)
   }
   return (
-      <div className="flex justify-center pt-8 py-18 bg-secondary">
+      <div className="flex justify-center pt-8 py-18 bg-secondary" ref={aboutRef}>
         <div className="w-[70%]">
           <h1 className="text-[28px] font-bold underline text-center underline-offset-4">About Us</h1>
             <div className=" flex w-[65%] pt-8 pb-5">

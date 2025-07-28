@@ -136,8 +136,8 @@ const ExamInternalThComponent = () => {
         <div className="bg-background min-h-[50.8vh] flex justify-center py-8">
             <div className="w-[80%]">
                 <h1 className="font-bold text-4xl text-center underline">Examination Details</h1>
-                <div className="flex gap-7 pt-10 w-[75%]">
-                    <div className="w-full">
+                <div className="flex gap-7 mt-10 w-[75%] ">
+                    <div className="w-1/3">
                         <Select>
                             <SelectTrigger style={{ border: "1px solid black" }} className="w-full bg-secondary mt-3 border border-black shadow-none outline-none focus:outline-none focus:ring-0 focus:border-black focus-visible:ring-0 hover:border-black data-[state=open]:border-black">
                                 <SelectValue placeholder="Select Sem" />
@@ -152,7 +152,7 @@ const ExamInternalThComponent = () => {
                         </Select>
                     </div>
 
-                    <div className="w-full">
+                    <div className="w-1/3">
                         <Select onValueChange={(e) => setExamtype(e)}>
                             <SelectTrigger style={{ border: "1px solid black" }} className="w-full bg-secondary mt-3 border border-black shadow-none outline-none focus:outline-none focus:ring-0 focus:border-black focus-visible:ring-0 hover:border-black data-[state=open]:border-black">
                                 <SelectValue placeholder="Select Exam Type" />
@@ -163,9 +163,9 @@ const ExamInternalThComponent = () => {
                             </SelectContent>
                         </Select>
                     </div>
-
-                    <div className="w-full">
-                        <Select onValueChange={(e) => setMarksType(e)} disabled={Examtype=="MidSem"?true:false}>
+        
+                    <div className={`w-1/3 ${Examtype=="MidSem"?'hidden':'block'}`}>
+                        <Select onValueChange={(e) => setMarksType(e)} >
                             <SelectTrigger style={{ border: "1px solid black" }} className="w-full bg-secondary mt-3 border border-black shadow-none outline-none focus:outline-none focus:ring-0 focus:border-black focus-visible:ring-0 hover:border-black data-[state=open]:border-black">
                                 <SelectValue placeholder="Select Marks Type" />
                             </SelectTrigger>

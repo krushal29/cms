@@ -144,8 +144,9 @@ const ApplyUploadDocumentPopup = ({closeUploadHandle,PrevUploadHandle}) => {
                     </div>
 
 
-                    <div className="pt-3">
+                    <div className="pt-4 flex justify-between">
                         <Button className="px-7 cursor-pointer" onClick={PrevUploadHandle}>Back</Button>
+                        <Button className="px-7 cursor-pointer">Submit</Button>
                     </div>
 
 

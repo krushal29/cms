@@ -40,7 +40,7 @@ const AddEventPopup = ({ onCloseEvent }) => {
                             type="date"
                             className="w-full pl-3 mt-3 pr-4 py-2 bg-primary-foreground border border-gray-300 rounded-md text-right placeholder:text-left"
                             placeholder="Select date"
-                            name='Date' />
+                            name='Date' value="2017-06-01" />
                 </div>
 
 

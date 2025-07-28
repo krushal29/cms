@@ -2,10 +2,10 @@ import Navbar from "./Navbar"
 import SchoolFooter from "./SchoolFooter"
 
 
-const SchoolLayout = ({children}) => {
+const SchoolLayout = ({children,onClickAboutScroll,onClickPlacementScroll,onClickProgramScroll}) => {
   return (
     <div>
-        <Navbar/>
+        <Navbar onClickAboutScroll={onClickAboutScroll} onClickPlacementScroll={onClickPlacementScroll} onClickProgramScroll={onClickProgramScroll}/>
         {children}
         <SchoolFooter/>
     </div>
