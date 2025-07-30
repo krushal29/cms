@@ -20,13 +20,16 @@ const StudentAttendancePopup = ({ onCloseHandle }) => {
   };
 
   const tileClassName = ({ date, view }) => {
-    if (view === "month") {
-      const formatted = formatDate(date);
-      if (attendanceData.absent.includes(formatted)) return "absent-day";
-      if (attendanceData.dontCare.includes(formatted)) return "dont-care-day";
-    }
-    return "";
-  };
+  if (view === "month") {
+    const formatted = formatDate(date);
+    const todayFormatted = formatDate(new Date());
+
+    if (attendanceData.absent.includes(formatted)) return "absent-day";
+    if (attendanceData.dontCare.includes(formatted)) return "dont-care-day";
+    if (formatted === todayFormatted) return "today-date";
+  }
+  return "";
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen px-2">

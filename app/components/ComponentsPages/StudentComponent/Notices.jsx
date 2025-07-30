@@ -30,10 +30,9 @@ const data = [
 ]
 
 
-
 const Notices = () => {
     return (
-        <div className="bg-background min-h-[50.8vh] flex justify-center py-10 font-[lora]">
+        <div className="bg-background min-h-[50.8vh] flex justify-center py-10">
             <div className="w-[90%]">
                 <h1 className="font-bold text-4xl text-center underline font-[inner]">NOTICES</h1>
                 <div className="my-10 space-y-8">

@@ -40,8 +40,8 @@ const Department = () => {
 
       <div className="w-[80%] mx-auto my-15">
         <div className="w-[97%] flex justify-between space-x-8">
-          <Button className={`w-1/2 cursor-pointer text-[20px] py-5 ${selectVision == "Vision" ? 'bg-black text-white' : 'bg-background text-black'}`} onClick={() => setSelectVision("Vision")}>Vision</Button>
-          <Button className={`w-1/2 cursor-pointer text-[20px] py-5 ${selectVision == "Mission" ? 'bg-black text-white' : 'bg-background text-black'}`} onClick={() => setSelectVision("Mission")}>Mission</Button>
+          <Button className={`hover:text-white w-1/2 cursor-pointer text-[20px] py-5 ${selectVision == "Vision" ? 'bg-black text-white' : 'bg-background text-black'}`} onClick={() => setSelectVision("Vision")}>Vision</Button>
+          <Button className={`hover:text-white w-1/2 cursor-pointer text-[20px] py-5 ${selectVision == "Mission" ? 'bg-black text-white' : 'bg-background text-black'}`} onClick={() => setSelectVision("Mission")}>Mission</Button>
         </div>
         {selectVision == "Vision" ? <div className="bg-background mt-10 rounded-2xl py-5 px-7 drop-shadow-lg shadow-2xs shadow-ring text-[16px]">
           <p className="font-medium text-[18px]">Grand Valley College envisions being a globally recognized institution that transforms lives through exceptional education, groundbreaking research, and meaningful community engagement. We aspire to be at the forefront of addressing society's most pressing challenges while nurturing the next generation of thoughtful, ethical, and innovative leaders.</p>

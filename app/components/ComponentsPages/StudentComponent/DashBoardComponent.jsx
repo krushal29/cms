@@ -12,7 +12,6 @@ import CounselorDetails from './CounselorDetails';
 const DashBoardComponent = () => {
     const [StudentDetails,setStudentDetails]=useState("PersonalDetails");
     
-    
     return (
         <div className="bg-background min-h-[50.8vh] flex justify-center py-8">
             <div className='w-[80%]'>

@@ -12,7 +12,7 @@ import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 const PayFeePopup = ({ onClosePayPopup }) => {
     return (
         <div className="flex justify-center h-screen items-center relative">
-            <div className="bg-card px-10 pt-7 rounded-[10px] w-[34%] relative h-[90%] overflow-y-scroll">
+            <div className="bg-card px-10 pt-7 rounded-[10px] w-[34%] relative h-[90%] overflow-y-scroll drop-shadow-2xl shadow-ring">
                 <div className='flex justify-between'>
                     <h1 className='font-semibold text-2xl'>Pay Fees</h1>
                     <p><IoClose className='cursor-pointer text-2xl absolute right-3 top-4' onClick={onClosePayPopup} /></p>

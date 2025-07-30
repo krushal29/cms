@@ -15,7 +15,7 @@ const ApplyNowPopup = ({ closeApplyHandle,nextHandle }) => {
 
     return (
         <div className=" flex justify-center align-middle relative">
-            <div className="w-[35%] my-7 h-[93vh] overflow-y-scroll rounded-bl-[10px] rounded-br-[10px] drop-shadow-lg shadow-ring">
+            <div className="w-[35%] my-7 h-[93vh] overflow-y-scroll rounded-bl-[10px] rounded-br-[10px] drop-shadow-2xl shadow-ring scrollbar-thin">
                 <div className="flex justify-between items-center bg-[#d4d4d8] py-2 px-4 rounded-tl-[10px] rounded-tr-[10px]">
                     <h3 className="font-semibold">Apply to Grand Valley College </h3>
                     <p><IoClose onClick={closeApplyHandle} className="text-2xl cursor-pointer" /></p>
@@ -56,9 +56,8 @@ const ApplyNowPopup = ({ closeApplyHandle,nextHandle }) => {
                         <input
                         type="date"
                         className="w-full pl-3 mt-1 pr-4 py-2 bg-primary-foreground border border-gray-300 rounded-md text-right placeholder:text-left"
-                        placeholder="Select date"
+                        placeholder="dd/mm/yyyy"
                         name='Date'
-                        
                     />
                     </div>
 

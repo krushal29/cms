@@ -7,7 +7,7 @@ import { Button } from "../../ui/button";
 const ApplyUploadDocumentPopup = ({closeUploadHandle,PrevUploadHandle}) => {
     return (
         <div className=" flex justify-center align-middle relative">
-            <div className="w-[35%] my-7 h-[85vh] overflow-y-scroll rounded-bl-[10px] rounded-br-[10px] drop-shadow-lg shadow-ring">
+            <div className="w-[35%] my-7 h-[85vh] overflow-y-scroll rounded-bl-[10px] rounded-br-[10px] drop-shadow-2xl shadow-ring">
                 <div className="flex justify-between items-center bg-[#d4d4d8] py-2 px-4 rounded-tl-[10px] rounded-tr-[10px]">
                     <h3 className="font-semibold">Apply to Grand Valley College </h3>
                     <p><IoClose onClick={closeUploadHandle} className="text-2xl cursor-pointer" /></p>

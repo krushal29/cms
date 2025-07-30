@@ -177,7 +177,8 @@ const ExamInternalThComponent = () => {
                     </div>
 
                 </div>
-                {Examtype == "Internal" && MarksType == "theory" && <div className="py-10 drop-shadow-lg shadow-ring">
+
+                {Examtype == "Internal" && MarksType == "theory" && <div className="py-7 drop-shadow-lg shadow-ring">
                     <Table className="bg-white rounded-[7px]">
                         <TableHeader>
                             <TableRow className="border-b border-black">
@@ -203,7 +204,7 @@ const ExamInternalThComponent = () => {
                 </div>
                 }
                 {
-                    Examtype == "Internal" && MarksType == "Viva" && <div className="py-10 drop-shadow-lg shadow-ring">
+                    Examtype == "Internal" && MarksType == "Viva" && <div className="py-7 drop-shadow-lg shadow-ring">
                         <Table className="bg-white rounded-[7px]">
                             <TableHeader>
                                 <TableRow className="border-b border-black">
@@ -231,7 +232,7 @@ const ExamInternalThComponent = () => {
 
 
                  {
-                    Examtype == "MidSem" && <div className="py-10 drop-shadow-lg shadow-ring">
+                    Examtype == "MidSem" && <div className="py-7 drop-shadow-lg shadow-ring">
                         <Table className="bg-white rounded-[7px]">
                             <TableHeader>
                                 <TableRow className="border-b border-black">

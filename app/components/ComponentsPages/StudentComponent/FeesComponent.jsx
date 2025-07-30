@@ -13,29 +13,50 @@ import VerifyFees from './VerifyFees';
 import PayFeePopup from './PayFeePopup';
 
 const FeesComponent = () => {
-    const [showVerifyPopup,setShowVerifyPopup]=useState(false);
-    const [showPaypopup,setShowPayPopup]=useState(false);
+    const [showVerifyPopup, setShowVerifyPopup] = useState(false);
+    const [showPaypopup, setShowPayPopup] = useState(false);
+    const [verifyform, setverifyForm] = useState({
+        EnrollmentNumber: "",
+        Semester: "",
+        Amount: "",
+        PaymentType: "",
+        UploadReceipt: ""
+    })
 
-    const onCloseVerifyPopup=()=>setShowVerifyPopup(false);
+    const onChangeVerifyHandle = (e) => {
+        const { name, value } = e.target;
+        setverifyForm({ ...verifyform, [name]: value })
+    }
 
-    const onClosePayPopup=()=>setShowPayPopup(false);
+    const onVerifySubmit = (e) => {
+        e.preventDefault();
+        try {
+            console.log(verifyform);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const onCloseVerifyPopup = () => setShowVerifyPopup(false);
+
+    const onClosePayPopup = () => setShowPayPopup(false);
     return (
         <div className='bg-background min-h-[50.8vh] flex justify-center py-8'>
             <div className='w-[80%]'>
                 <h1 className='font-bold text-4xl text-center underline'>Fees Management</h1>
+                {/* hover */}
+                {/* <div className='pt-8 space-x-8'>
+                    <Button className='px-10 text-[17px] cursor-pointer' onClick={() => setShowPayPopup(true)}>Pay</Button>
+                    <Button className='px-10 text-[17px] cursor-pointer' onClick={() => setShowVerifyPopup(true)}>Verify</Button>
+                </div> */}
 
-                <div className='pt-8 space-x-8'>
-                    <Button className='px-10 text-[17px] cursor-pointer' onClick={()=>setShowPayPopup(true)}>Pay</Button>
-                    <Button className='px-10 text-[17px] cursor-pointer' onClick={()=>setShowVerifyPopup(true)}>Verify</Button>
-                </div>
-
-                <div className="py-10 drop-shadow-lg shadow-ring">
+                <div className="py-15 drop-shadow-lg shadow-ring">
                     <Table className="bg-white rounded-[7px]">
                         <TableHeader>
                             <TableRow>
                                 <TableHead className="font-semibold text-[17px]">Sr No.</TableHead>
                                 <TableHead className="font-semibold text-[17px]">Total fees</TableHead>
-                                 <TableHead className="font-semibold text-[17px]">Semester</TableHead>
+                                <TableHead className="font-semibold text-[17px]">Semester</TableHead>
                                 <TableHead className="font-semibold text-[17px]">Date</TableHead>
                                 <TableHead className="font-semibold text-[17px]">Payment Type</TableHead>
                                 <TableHead className="font-semibold text-[17px]">Download </TableHead>
@@ -49,16 +70,16 @@ const FeesComponent = () => {
                                     <TableCell>2</TableCell>
                                     <TableCell>5/2/2025</TableCell>
                                     <TableCell>NEFT</TableCell>
-                                    <TableCell className='flex items-center cursor-pointer'><span className='font-semibold underline'>Download Receipt</span><span className='pl-2'><MdOutlineFileDownload className='text-xl'/></span></TableCell>
+                                    <TableCell className='flex items-center cursor-pointer'><span className='font-semibold underline'>Download Receipt</span><span className='pl-2'><MdOutlineFileDownload className='text-xl' /></span></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </div>
             </div>
-            {showVerifyPopup&&<div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring'><VerifyFees onCloseVerifyPopup={onCloseVerifyPopup}/></div>}
+            {showVerifyPopup && <div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring'><VerifyFees onCloseVerifyPopup={onCloseVerifyPopup} verifyform={verifyform} onChangeVerifyHandle={onChangeVerifyHandle} onVerifySubmit={onVerifySubmit}/></div>}
 
-            {showPaypopup&&<div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring'><PayFeePopup onClosePayPopup={onClosePayPopup}/></div>}
+            {showPaypopup && <div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring'><PayFeePopup onClosePayPopup={onClosePayPopup} /></div>}
         </div>
     )
 }

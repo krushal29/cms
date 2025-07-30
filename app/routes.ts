@@ -12,6 +12,7 @@ export default [
     route('/DepartmentAchivements', 'routes/SchoolPages/AchivementsPage.jsx'),
     route('/Placement', 'routes/SchoolPages/SchoolPlacementPage.jsx'),
 
+    
 
     //Student pages
     route('/StudentDashBoard', 'routes/StudentPages/DashBoard.jsx'),

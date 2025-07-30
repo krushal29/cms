@@ -1,10 +1,7 @@
 import { IoCalendarClearOutline } from "react-icons/io5";
-import { IoTimeOutline } from "react-icons/io5";
 import { FaRegClock } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
-import {Button} from '../../ui/button'
-import { useState } from "react";
-import RegisterEventPopup from "./RegisterEventPopup";
+
 
 const data = [
   {
@@ -34,22 +31,49 @@ const data = [
     desc: "Celebrate diversity with performances, food, and cultural exhibitions from students around the world.",
     role: "Closed"
   },
+  {
+    id: 4,
+    Heading: "Innovation Expo",
+    date: "4/10/2024",
+    time: "11:00 am",
+    vanue: "Innovation Hall",
+    desc: "Showcase of student innovations and projects in tech, design, and sustainability.",
+    role: "Upcoming"
+  },
+  {
+    id: 5,
+    Heading: "Guest Lecture: AI in Healthcare",
+    date: "4/15/2024",
+    time: "2:00 pm",
+    vanue: "Seminar Room B",
+    desc: "Join Dr. Meera Shah as she explores the applications of artificial intelligence in modern medicine.",
+    role: "Upcoming"
+  },
+  {
+    id: 6,
+    Heading: "Sports Day",
+    date: "4/20/2024",
+    time: "8:00 am",
+    vanue: "Athletics Track",
+    desc: "Full day of track and field events, games, and awards. All students welcome to participate or cheer.",
+    role: "Closed"
+  }
+];
 
-]
 
 const Event = () => {
-  const [DoRegister,setRegister]=useState(false);
+  // const [DoRegister,setRegister]=useState(false);
 
 
 
-  const RegisterHandle=()=>{
-    setRegister(true);
-  }
-  const onCloseHandle=()=>{
-    setRegister(false);
-  }
+  // const RegisterHandle=()=>{
+  //   setRegister(true);
+  // }
+  // const onCloseHandle=()=>{
+  //   setRegister(false);
+  // }
   return (
-    <div className="bg-background min-h-[50.8vh] flex justify-center pt-10 pb-15 font-[lora]">
+    <div className="bg-background min-h-[50.8vh] flex justify-center pt-10 pb-15">
       <div className="w-[90%]">
         <h1 className="font-bold text-4xl text-center underline font-[inner]">Events</h1>
 
@@ -96,16 +120,16 @@ const Event = () => {
               </div>
 
 
-            <div className="pt-2">
+            {/* <div className="pt-2">
               <Button className="text-[17px] cursor-pointer py-5 px-7" onClick={RegisterHandle}>Register</Button>
-            </div>
+            </div> */}
             </div>
           ))}
         </div>
       </div>
 
 
-      {DoRegister&&<div className="fixed inset-0 backdrop-blur-[1px]"><RegisterEventPopup onCloseHandle={onCloseHandle}/></div>}
+      {/* {DoRegister&&<div className="fixed inset-0 backdrop-blur-[1px]"><RegisterEventPopup onCloseHandle={onCloseHandle}/></div>} */}
     </div>
   )
 }

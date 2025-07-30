@@ -14,7 +14,6 @@ const data = [
     OrganisedBy: "CVM University",
     Date: "15-6-2024",
     Location: "ADIT College",
-    status: "Approved",
   },
   {
     id: 2,
@@ -24,7 +23,6 @@ const data = [
     OrganisedBy: "GTU & SSIP",
     Date: "2024-05-10",
     Location: "LDCE Ahmedabad",
-    status: "Approved",
   },
   {
     id: 3,
@@ -34,7 +32,6 @@ const data = [
     OrganisedBy: "IIT Bombay",
     Date: "2023-12-18",
     Location: "IIT Bombay",
-    status: "Pending",
   },
   {
     id: 4,
@@ -44,7 +41,6 @@ const data = [
     OrganisedBy: "IEEE Gujarat Section",
     Date: "2024-02-28",
     Location: "Nirma University",
-    status: "Approved",
   },
   {
     id: 5,
@@ -54,7 +50,6 @@ const data = [
     OrganisedBy: "CodeChef",
     Date: "2024-03-22",
     Location: "Online",
-    status: "Pending",
   },
   {
     id: 6,
@@ -64,7 +59,6 @@ const data = [
     OrganisedBy: "Red Cross India",
     Date: "2023-11-01",
     Location: "Anand",
-    status: "Approved",
   },
   {
     id: 7,
@@ -74,7 +68,6 @@ const data = [
     OrganisedBy: "CVM Sports Committee",
     Date: "2024-01-12",
     Location: "GCET College",
-    status: "Pending",
   },
   {
     id: 8,
@@ -84,7 +77,6 @@ const data = [
     OrganisedBy: "TCS iON",
     Date: "2023-07-31",
     Location: "Remote",
-    status: "Approved",
   },
   {
     id: 9,
@@ -94,7 +86,6 @@ const data = [
     OrganisedBy: "Startup India",
     Date: "2024-04-20",
     Location: "IIM Ahmedabad",
-    status: "Pending",
   },
   {
     id: 10,
@@ -104,7 +95,6 @@ const data = [
     OrganisedBy: "GitHub Community",
     Date: "2024-06-05",
     Location: "Online",
-    status: "Approved",
   },
 ];
 
@@ -112,22 +102,68 @@ const data = [
 
 
 const AchivementsCompoents = () => {
+  const [form,setForm]=useState({
+    AchievementTitle:"",
+    AchievementType:"",
+    Location:"",
+    OrganisedBy:"",
+    Date:"",
+    ProvideReason:"",
+    UploadCertificate:""
+  })
+
   const [showAddAchievement,setShowAddAchievement]=useState(false);
   const [showEditAchievement,setShowEditAchievement]=useState(false);
-  const [editData,setEditData]=useState({});
+  
 
   const onCloseAchievement=()=>setShowAddAchievement(false);
   const onEditCloseAchievement=()=>setShowEditAchievement(false);
   
-  const onEditHandle=(id)=>{
+  const onEditFilterHandle=(id)=>{
     setShowEditAchievement(true);
 
     const filterData=data.find((val)=>val.id==id);
-    setEditData(filterData);
+    const dataObj={
+      AchievementTitle:filterData.heading,
+      AchievementType:filterData.Type,
+      Location:filterData.Location,
+      OrganisedBy:filterData.OrganisedBy,
+      Date:filterData.Date,
+      ProvideReason:filterData.desc,
+    }
+    setForm(dataObj);
+  }
+
+  const onChangeHandle=(e)=>{
+      const {name,value}=e.target;  
+      setForm({...form,[name]:value});
+  }
+  const onChangeEditHandle=(e)=>{
+      const {name,value}=e.target;
+      setForm({...form,[name]:value})
+  }
+
+  const onSubmitHandle=(e)=>{
+    e.preventDefault();
+    try{
+      console.log(form);
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  const onEditHandle=(e)=>{
+    e.preventDefault();
+    try{
+      console.log(form);
+    }catch(e){
+      console.log(e);
+    }
+
   }
   return (
     <div className='bg-background min-h-[50.8vh] flex justify-center py-10'>
-      <div className='w-[80%]'>
+      <div className='w-[80%] drop-shadow-2xl shadow-ring'>
         <h1 className='font-bold text-4xl text-center underline'>Achivements</h1>
 
         <div className='flex items-center py-10'>
@@ -140,7 +176,6 @@ const AchivementsCompoents = () => {
             <div className='bg-secondary py-7 px-5 rounded-2xl drop-shadow-lg shadow-ring' key={index}>
               <div className='flex justify-between'>
                 <p className='bg-cyan-200 text-cyan-600 py-1 px-3 rounded-2xl'>{val.Type}</p>
-                <p className={`${val.status=="Pending"?'bg-rose-200 text-rose-600':'bg-green-200 text-green-600'}  py-1 px-3 rounded-2xl`}>{val.status}</p>
               </div>
 
               <div className='flex items-center pt-3'>
@@ -169,7 +204,7 @@ const AchivementsCompoents = () => {
 
               <div className='pt-4 w-full space-x-8'>
                 <Button className='bg-primary-foreground text-black w-[45%] hover:bg-primary-foreground cursor-pointer border border-gray'>View Certificate</Button>
-                <Button className='w-[45%] bg-primary-foreground text-black hover:bg-primary-foreground cursor-pointer border border-gray' onClick={()=>onEditHandle(val.id)}>Edit</Button>
+                <Button className='w-[45%] bg-primary-foreground text-black hover:bg-primary-foreground cursor-pointer border border-gray' onClick={()=>onEditFilterHandle(val.id)}>Edit</Button>
               </div>
             </div>
           ))}
@@ -177,9 +212,9 @@ const AchivementsCompoents = () => {
         </div>
       </div>
 
-      {showAddAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><AddAchievements onCloseAchievement={onCloseAchievement}/></div>}
+      {showAddAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><AddAchievements onCloseAchievement={onCloseAchievement} onChangeHandle={onChangeHandle} form={form} onSubmitHandle={onSubmitHandle}/></div>}
 
-      {showEditAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><EditAchievements onEditCloseAchievement={onEditCloseAchievement} editData={editData}/></div>}
+      {showEditAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><EditAchievements onEditCloseAchievement={onEditCloseAchievement} editData={form} onChangeEditHandle={onChangeEditHandle} onEditHandle={onEditHandle}/></div>}
     </div>
   )
 }

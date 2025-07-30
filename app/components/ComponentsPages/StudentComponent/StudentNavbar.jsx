@@ -95,3 +95,55 @@ const StudentNavbar = () => {
 };
 
 export default StudentNavbar;
+
+
+
+// import {
+//   Sidebar,
+//   SidebarContent,
+//   SidebarGroup,
+//   SidebarGroupContent,
+//   SidebarGroupLabel,
+//   SidebarMenu,
+//   SidebarMenuButton,
+//   SidebarMenuItem,
+// } from "../../ui/sidebar"
+ 
+
+// const StudentNavbar = () => {
+//   const items = [
+//     { title: "Dashboard", url: "/StudentDashBoard" },
+//     { title: "Attendance", url: "/StudentAttendance" },
+//     { title: "Materials", url: "/StudentMaterial" },
+//     { title: "Events", url: "/StudentEvent" },
+//     { title: "Notices", url: "/StudentNotice" },
+//     { title: "Achievements", url: "/StudentAchievements" },
+//     { title: "Fees", url: "/StudentFees" },
+//     { title: "Apply for Leave", url: "/StudentLeave" },
+//   ];
+
+//   return (
+//      <Sidebar>
+//       <SidebarContent>
+//         <SidebarGroup>
+//           <SidebarGroupLabel>Student Menu</SidebarGroupLabel>
+//           <SidebarGroupContent>
+//             <SidebarMenu>
+//               {items.map((item) => (
+//                 <SidebarMenuItem key={item.title}>
+//                   <SidebarMenuButton asChild>
+//                     <a href={item.url}>
+//                       <span>{item.title}</span>
+//                     </a>
+//                   </SidebarMenuButton>
+//                 </SidebarMenuItem>
+//               ))}
+//             </SidebarMenu>
+//           </SidebarGroupContent>
+//         </SidebarGroup>
+//       </SidebarContent>
+//     </Sidebar>
+//   )
+// }
+
+// export default StudentNavbar

@@ -35,9 +35,30 @@ const data = [
 ]
 const LeaveManagement = () => {
     const [LeavePopup, setLeavePopup] = useState(false);
+    const [form, setForm] = useState({
+        EnrollmentNumber: "",
+        LeaveType: "",
+        FromDate: "",
+        ToDate: "",
+        ProvideReason: "",
+        UploadCertificate: ""
+    })
 
+    const onChangeHandle = (e) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value })
+    }
+    
+    const onSubmitHandle=(e)=>{
+        e.preventDefault();
+        try{
+            console.log(form);
+        }catch(e){
+            console.log(e);
+        }
+    }
 
-    const onCloseLeave=()=>{
+    const onCloseLeave = () => {
         setLeavePopup(false)
     }
 
@@ -81,7 +102,7 @@ const LeaveManagement = () => {
                 </div>
             </div>
             {
-                LeavePopup && <div className='backdrop-blur-[3px] fixed inset-0 drop-shadow-lg shadow-ring'><ApplyLeave onCloseLeave={onCloseLeave}/></div>
+                LeavePopup && <div className='backdrop-blur-[3px] fixed inset-0 drop-shadow-lg shadow-ring'><ApplyLeave onCloseLeave={onCloseLeave} form={form} onChangeHandle={onChangeHandle} onSubmitHandle={onSubmitHandle}/></div>
             }
         </div>
     )

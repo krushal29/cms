@@ -1,35 +1,109 @@
-/* 1. Make the calendar grid use flex-wrap */
-.react-calendar__month-view__days {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px; /* <<< spacing between date tiles */
-  justify-content: center;
-}
-
-/* 2. Ensure each tile behaves like a square */
+/* ===================== COMMON TILE STYLES ===================== */
 .react-calendar__tile {
-  flex: 1 0 calc(14.28% - 8px); /* 7 columns - gap accounted */
-  max-width: calc(14.28% - 8px);
-  aspect-ratio: 1/1; /* keeps square shape */
-  padding: 0.5rem;
+  padding: 10px 0;
   border-radius: 8px;
+  font-weight: 500;
   text-align: center;
+  transition: all 0.2s ease-in-out;
 }
 
-/* 3. Override styles for status circles */
-.react-calendar__tile.absent-day,
-.react-calendar__tile.dont-care-day {
-  border-radius: 50% !important;
+/* ===================== HOVER STYLES ===================== */
+.react-calendar__tile:hover {
+  background-color: #e0f2fe; /* Tailwind blue-100 */
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+/* ===================== ACTIVE TILE (SELECTED DATE) ===================== */
+.react-calendar__tile--active {
+  background-color: #60a5fa !important; /* Tailwind blue-400 */
+  color: white !important;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* ===================== TODAY'S DATE ===================== */
+.today-date {
+  background-color: #86efac !important; /* Tailwind green-300 */
+  color: black !important;
+  border-radius: 8px;
+}
+
+/* ===================== ABSENT / DON'T CARE STYLES ===================== */
+.absent-day {
+  background-color: #f87171 !important; /* Tailwind red-400 */
+  color: white !important;
+  border-radius: 8px;
+}
+.dont-care-day {
+  background-color: #60a5fa !important; /* Tailwind blue-400 */
+  color: white !important;
+  border-radius: 8px;
+}
+
+/* ===================== NAVIGATION BUTTON STYLING ===================== */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.react-calendar__navigation button {
+  background: transparent;
+  border: none;
+  color: #1f2937; /* Tailwind gray-800 */
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.react-calendar__navigation button:hover {
+  background-color: #e2e8f0; /* Tailwind gray-200 */
+  transform: scale(1.05);
+}
+
+/* ===================== VIEW-SPECIFIC STYLING ===================== */
+/* Months in Year View */
+.react-calendar__year-view__months__month {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  height: 60px;
+  background-color: #f1f5f9; /* Tailwind slate-100 */
 }
 
-.react-calendar__tile.absent-day {
-  background-color: #f87171 !important;
+/* Years in Decade View */
+.react-calendar__decade-view__years__year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background-color: #f1f5f9; /* Tailwind slate-100 */
 }
 
-.react-calendar__tile.dont-care-day {
+/* Decades in Century View */
+.react-calendar__century-view__decades__decade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background-color: #f1f5f9; /* Tailwind slate-100 */
+}
+
+/* Apply hover and border radius to all non-month tiles */
+.react-calendar__year-view__months__month:hover,
+.react-calendar__decade-view__years__year:hover,
+.react-calendar__century-view__decades__decade:hover {
+  background-color: #e0f2fe; /* Tailwind blue-100 */
+  transform: scale(1.05);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* Highlight selected month/year/decade */
+.react-calendar__tile--hasActive {
   background-color: #60a5fa !important;
+  color: white !important;
+  border-radius: 10px;
 }
