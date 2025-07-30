@@ -34,7 +34,7 @@ const SchoolNews = () => {
             <h1 className="text-[28px] font-medium underline text-center underline-offset-4">News</h1>
             <p className="w-[70%] pt-2 mx-auto text-center">Stay connected with the latest updates from Grand Valley College.</p>
   
-            <div className="pt-5">
+             <div className="pt-5">
               {Obj.map((data, index) => {
                 return (
                   <div className='flex mt-8 drop-shadow-lg shadow-ring' key={index}>
@@ -49,6 +49,10 @@ const SchoolNews = () => {
                 )
               })}
             </div>
+
+
+
+
         <div className="flex items-center text-center  justify-center py-5 text-[#0E7490] font-medium text-[18px] mt-5">
           <p className="cursor-pointer">View More</p>
           <div>
