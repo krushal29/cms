@@ -7,7 +7,6 @@ import { IoClose } from "react-icons/io5";
 const StudentAttendancePopup = ({ onCloseHandle }) => {
   const [value, setValue] = useState(new Date());
 
-  // Format date to YYYY-MM-DD
   const formatDate = (date) =>
     `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
@@ -27,15 +26,13 @@ const StudentAttendancePopup = ({ onCloseHandle }) => {
       if (attendanceData.dontCare.includes(formatted)) return "dont-care-day";
       if (formatted === todayFormatted) return "today-date";
     }
-
     return "";
   };
+
 
   return (
     <div className="flex justify-center items-center min-h-screen px-2">
       <div className="relative bg-secondary p-6 rounded-2xl shadow-lg w-full max-w-md">
-
-        {/* Close Button */}
         <button
           className="absolute top-3 right-3 text-gray-500 cursor-pointer"
           onClick={onCloseHandle}
@@ -53,7 +50,7 @@ const StudentAttendancePopup = ({ onCloseHandle }) => {
             onChange={setValue}
             value={value}
             tileClassName={tileClassName}
-
+            formatMonth={(locale, date) => date.toLocaleString(locale, { month: 'short' })}
           />
 
         </div>

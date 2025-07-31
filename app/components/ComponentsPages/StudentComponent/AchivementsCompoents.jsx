@@ -166,12 +166,12 @@ const AchivementsCompoents = () => {
       <div className='w-[80%] drop-shadow-2xl shadow-ring'>
         <h1 className='font-bold text-4xl text-center underline'>Achivements</h1>
 
-        <div className='flex items-center py-10'>
+        {/* <div className='flex items-center py-10'>
           <p className='text-[18px] font-semibold'>Upload Your Achivement :</p>
           <Button className='ml-5 px-10 cursor-pointer' onClick={()=>setShowAddAchievement(true)}>Upload Achivement <span><MdOutlineFileDownload /></span></Button>
-        </div>
+        </div> */}
 
-        <div className='grid grid-cols-3 gap-10 py-10'>
+        <div className='grid grid-cols-3 gap-10 py-15'>
           {data.map((val, index) => (
             <div className='bg-secondary py-7 px-5 rounded-2xl drop-shadow-lg shadow-ring' key={index}>
               <div className='flex justify-between'>

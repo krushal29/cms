@@ -12,6 +12,13 @@ import { GiGraduateCap } from "react-icons/gi";
 const StudentNavbar = () => {
   const navigate = useNavigate();
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showQuizClick,setshowQuizClick]=useState(false);
+  const [showExamClick,setShowExamClick]=useState(false);
+  const [showFeesHover,setShowFeeHover]=useState(false);
+  const [showAchievementsHover,setShowAchievementsHover]=useState(false);
+  const [showLeaveHover,setShowLeaveHover]=useState(false);
+
+  console.log(showFeesHover);
 
   return (
     <div className="bg-secondary flex justify-center">
@@ -59,33 +66,69 @@ const StudentNavbar = () => {
               <li onClick={() => { navigate('/StudentNotice'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
                 <FaBullhorn /> Notices
               </li>
-              <li onClick={() => { navigate('/StudentAchievements'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
+
+              {/* Achievements+Pending */}
+              <li onMouseEnter={()=>setShowAchievementsHover(true)} onMouseLeave={()=>setShowAchievementsHover(false)} onClick={() => { navigate('/StudentAchievements'); setShowSidebar(false); }} className=" hover:bg-accent py-2 px-4 rounded-lg">
+                 <div className="flex items-center gap-2 cursor-pointer" >
                 <FaTrophy /> Achievements
+                </div>
+                <ul className={`${showAchievementsHover?'block':'hidden'}`}>
+                  <li>Upload Achivement</li>
+                </ul>
               </li>
-              <li onClick={() => { navigate('/StudentFees'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
+
+              {/* Fees+pending */}
+              <li  onMouseEnter={()=>setShowFeeHover(true)} onMouseLeave={()=>setShowFeeHover(false)} onClick={() => { navigate('/StudentFees'); setShowSidebar(false); }} className=" cursor-pointer hover:bg-accent py-2 px-4 rounded-lg relative">
+                <div className="flex items-center gap-2" >
                 <FaMoneyBillWave /> Fees
+                </div>
+                <ul className={`${showFeesHover?'block':'hidden'}`}>
+                  <li>Pay</li>
+                  <li>Verify</li>
+                </ul>
               </li>
-              <li onClick={() => { navigate('/StudentLeave'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaSignOutAlt /> Apply for Leave
+
+             {/* Leave */}
+              <li  onMouseEnter={()=>setShowLeaveHover(true)} onMouseLeave={()=>setShowLeaveHover(false)}  onClick={() => { navigate('/StudentLeave'); setShowSidebar(false); }} className=" hover:bg-accent py-2 px-4 rounded-lg">
+               
+                 <div className="flex items-center gap-2 cursor-pointer" >
+               <FaSignOutAlt /> Apply for Leave
+                </div>
+                <ul className={`${showLeaveHover?'block':'hidden'}`}>
+                  <li>Apply</li>
+                </ul>
               </li>
 
               {/* Quiz Section */}
-              <li className="mt-4 font-semibold text-gray-600">Quiz Section</li>
-              <li onClick={() => { navigate('/QuizUpcomming'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
+              <li className="mt-2 font-semibold text-gray-600" onClick={()=>setshowQuizClick(!showQuizClick)}>
+                <div className="cursor-pointer">
+                  Quiz Section
+                  </div>
+                <ul className={`${showQuizClick?'block':'hidden'} pt-2`}>
+                   <li onClick={() => { navigate('/QuizUpcomming'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
                 <MdQuiz /> Upcoming Quizzes
               </li>
               <li onClick={() => { navigate('/QuizResult'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
                 <MdAssessment /> Quiz Results
               </li>
+                </ul>
+              </li>
+
 
               {/* Exam Section */}
-              <li className="mt-4 font-semibold text-gray-600">Exam Section</li>
-              <li onClick={() => { navigate('/ExamInternal'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
+              <li className="mt-2 font-semibold text-gray-600">
+                <div className="cursor-pointer" onClick={()=>setShowExamClick(!showExamClick)}>
+                    Exam Section
+                </div>
+                <ul className={`${showExamClick?'block':'hidden'} pt-2`}>
+               <li onClick={() => { navigate('/ExamInternal'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
                 <GiGraduateCap /> Internal Exam
               </li>
               <li onClick={() => { navigate('/ExamExtenal'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
                 <GiGraduateCap /> External Exam
               </li>
+                </ul>  
+                </li>
             </ul>
           </div>
         </div>

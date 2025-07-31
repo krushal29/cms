@@ -1,6 +1,16 @@
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaRegClock } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../../ui/pagination";
+import { useState } from "react";
+
 
 
 const data = [
@@ -72,14 +82,27 @@ const Event = () => {
   // const onCloseHandle=()=>{
   //   setRegister(false);
   // }
+
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const paginatedEvent = data.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+
   return (
     <div className="bg-background min-h-[50.8vh] flex justify-center pt-10 pb-15">
       <div className="w-[90%]">
         <h1 className="font-bold text-4xl text-center underline font-[inner]">Events</h1>
 
         <div className="my-10 space-y-7">
-          {data.map((val, index) => (
-            <div className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l-13 border-black" key={index}>
+          {paginatedEvent.map((val, index) => (
+            <div className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l-7 border-black" key={index}>
               <div className="flex justify-between items-center ">
                 <h1 className="font-medium text-2xl">{val.Heading}</h1>
                 <p className={`${val.role == "Upcoming" ? 'bg-emerald-200 text-teal-950' : val.role == "Closed" ? 'bg-rose-200 text-pink-800' : ''} py-1 px-5 rounded-2xl`}>{val.role}</p>
@@ -87,7 +110,7 @@ const Event = () => {
               <div className="flex items-center pt-1 text-[15px]">
                 <div className="flex items-center">
                   <div className="font-bold">
-                    <IoCalendarClearOutline className="text-[16px]"/>
+                    <IoCalendarClearOutline className="text-[16px]" />
                   </div>
                   <div className="pl-3">
                     <p className="text-[16px]">{val.date}</p>
@@ -96,7 +119,7 @@ const Event = () => {
 
                 <div className="flex items-center pl-5">
                   <div className="font-bold">
-                    <FaRegClock  className="text-[16px]"/>
+                    <FaRegClock className="text-[16px]" />
                   </div>
                   <div className="pl-3">
                     <p className="text-[16px]">{val.time}</p>
@@ -106,7 +129,7 @@ const Event = () => {
 
                 <div className="flex items-center pl-5">
                   <div className="font-bold">
-                    <IoLocationOutline className="text-[19px]"/>
+                    <IoLocationOutline className="text-[19px]" />
                   </div>
                   <div className="pl-3">
                     <p className="text-[16px]">{val.vanue}</p>
@@ -120,12 +143,66 @@ const Event = () => {
               </div>
 
 
-            {/* <div className="pt-2">
+              {/* <div className="pt-2">
               <Button className="text-[17px] cursor-pointer py-5 px-7" onClick={RegisterHandle}>Register</Button>
             </div> */}
             </div>
           ))}
         </div>
+
+
+        <Pagination className="mt-10 flex justify-center">
+          <PaginationContent>
+
+            {/* Previous */}
+            <PaginationItem>
+              <PaginationPrevious
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (currentPage > 1) setCurrentPage(currentPage - 1);
+                }}
+                className="transition-all duration-200 text-[color:var(--foreground)] hover:bg-[color:var(--muted)] border border-[color:var(--border)] rounded-md px-3 py-2 text-[17px]"
+              />
+            </PaginationItem>
+
+            {/* Page Numbers */}
+            {Array.from({ length: totalPages }, (_, idx) => (
+              <PaginationItem key={idx}>
+                <PaginationLink
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(idx + 1);
+                  }}
+                  className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 border 
+            ${currentPage === idx + 1
+                      ? "bg-primary text-primary-foreground border-primary shadow-2xl"
+                      : "bg-background text-foreground border-border hover:bg-muted text-[17px]"
+                    }`}
+                >
+                  {idx + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+            {/* Next */}
+            <PaginationItem>
+              <PaginationNext
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+                }}
+                className="transition-all duration-200 text-[color:var(--foreground)] hover:bg-[color:var(--muted)] border border-[color:var(--border)] rounded-md px-3 py-2 text-[17px]"
+              />
+            </PaginationItem>
+
+          </PaginationContent>
+        </Pagination>
+
+
+
       </div>
 
 

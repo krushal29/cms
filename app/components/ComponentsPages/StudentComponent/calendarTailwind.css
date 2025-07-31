@@ -1,4 +1,4 @@
-/* Day Grid Layout */
+/* === Day Grid Layout === */
 .react-calendar__month-view__days {
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +17,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Attendance status */
+/* === Attendance Status === */
 .react-calendar__tile.absent-day,
 .react-calendar__tile.dont-care-day,
 .react-calendar__tile.today-date {
@@ -40,26 +40,21 @@
 .react-calendar__tile.today-date {
   background-color: #86efac !important; /* green-300 */
   color: white !important;
+  height: 100%;
 }
 
-/* Year view: grid months cleanly */
-.react-calendar__year-view__months {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  padding: 10px;
-}
-
+/* === Calendar Tile Hover + Active === */
 .react-calendar__tile--active {
   background-color: #60a5fa !important;
   color: white !important;
+  height: 10px;
 }
 
 .react-calendar__tile:enabled:hover {
   background-color: #dbeafe !important;
 }
 
-/* Calendar wrapper style */
+/* === Calendar Wrapper === */
 .custom-calendar {
   border-radius: 12px;
   background-color: white;
@@ -67,3 +62,23 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
+
+/* === Year View Month Grid === */
+.react-calendar__year-view__months {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+/* ✅ Fix month display in year view (e.g. "Jan", "Feb", "Mar") */
+.react-calendar__year-view__months__month {
+  text-transform: none !important;
+  font-size:17px;
+  font-weight: 500;
+  overflow: visible;
+  white-space: nowrap;
+  min-width: 40px;
+}
+
+

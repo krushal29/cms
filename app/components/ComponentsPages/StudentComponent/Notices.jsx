@@ -150,7 +150,7 @@ const data = [
 
 const Notices = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 5;
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const paginatedNotices = data.slice(
@@ -159,7 +159,7 @@ const Notices = () => {
   );
 
   return (
-    <div className="bg-background min-h-[50.8vh] flex justify-center py-10 font-[lora]">
+    <div className="bg-background min-h-[50.8vh] flex justify-center py-10">
       <div className="w-[90%]">
         <h1 className="font-bold text-4xl text-center underline font-[inner]">NOTICES</h1>
 
@@ -167,18 +167,17 @@ const Notices = () => {
           {paginatedNotices.map((val) => (
             <div
               key={val.id}
-              className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l-4 border-black"
+              className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l-7 border-black"
             >
               <div className="flex justify-between items-center">
                 <h1 className="font-medium text-2xl">{val.Heading}</h1>
                 <p
-                  className={`py-1 px-5 rounded-2xl font-medium ${
-                    val.role === "Academic"
-                      ? "bg-cyan-200 text-cyan-950"
-                      : val.role === "Facility"
+                  className={`py-1 px-5 rounded-2xl font-medium ${val.role === "Academic"
+                    ? "bg-cyan-200 text-cyan-950"
+                    : val.role === "Facility"
                       ? "bg-violet-200 text-violet-800"
                       : "bg-rose-200 text-pink-900"
-                  }`}
+                    }`}
                 >
                   {val.role}
                 </p>
@@ -194,9 +193,12 @@ const Notices = () => {
           ))}
         </div>
 
-        {/* Pagination */}
+
+        {/* pagination */}
+
         <Pagination className="mt-10 flex justify-center">
           <PaginationContent>
+            {/* Previous */}
             <PaginationItem>
               <PaginationPrevious
                 href="#"
@@ -204,10 +206,11 @@ const Notices = () => {
                   e.preventDefault();
                   if (currentPage > 1) setCurrentPage(currentPage - 1);
                 }}
-                className="hover:bg-muted"
+                className="transition-all duration-200 text-[color:var(--foreground)] hover:bg-[color:var(--muted)] border border-[color:var(--border)] rounded-md px-3 py-2 text-[17px]"
               />
             </PaginationItem>
 
+            {/* Page Numbers */}
             {Array.from({ length: totalPages }, (_, idx) => (
               <PaginationItem key={idx}>
                 <PaginationLink
@@ -216,17 +219,18 @@ const Notices = () => {
                     e.preventDefault();
                     setCurrentPage(idx + 1);
                   }}
-                  className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium border transition-colors ${
-                    currentPage === idx + 1
-                      ? "bg-primary text-white border-primary shadow"
-                      : "bg-background text-muted-foreground border-border hover:bg-muted"
-                  }`}
+                  className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 border 
+            ${currentPage === idx + 1
+                      ? "bg-primary text-primary-foreground border-primary shadow-2xl"
+                      : "bg-background text-foreground border-border hover:bg-muted text-[17px]"
+                    }`}
                 >
                   {idx + 1}
                 </PaginationLink>
               </PaginationItem>
             ))}
 
+            {/* Next */}
             <PaginationItem>
               <PaginationNext
                 href="#"
@@ -234,11 +238,13 @@ const Notices = () => {
                   e.preventDefault();
                   if (currentPage < totalPages) setCurrentPage(currentPage + 1);
                 }}
-                className="hover:bg-muted"
+                className="transition-all duration-200 text-[color:var(--foreground)] hover:bg-[color:var(--muted)] border border-[color:var(--border)] rounded-md px-3 py-2 text-[17px]"
               />
             </PaginationItem>
+
           </PaginationContent>
         </Pagination>
+
       </div>
     </div>
   );
