@@ -12,6 +12,9 @@ import {
     PaginationPrevious,
 } from "../../ui/pagination";
 
+
+
+
 const data = [
     {
         id: 1,
@@ -105,7 +108,6 @@ const TeacherNoticeComponent = () => {
     const onCloseAddNotice = () => setAddNotice(false);
     const onCloseEditNotice = () => setEditNotice(false);
 
-
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
@@ -118,10 +120,8 @@ const TeacherNoticeComponent = () => {
 
     const EditHandleNotice = (id) => {
         setEditNotice(true);
-
         const filterData = data.find((val) => val.id == id);
         setEditData(filterData);
-
     }
     return (
         <div className="bg-background min-h-[50.8vh] flex justify-center py-10">
@@ -129,7 +129,7 @@ const TeacherNoticeComponent = () => {
                 <h1 className="font-bold text-4xl text-center underline">NOTICES</h1>
 
 
-                <div className="pt-10">
+                <div className="pt-15">
                     <Button className="text-[18px] py-5 px-10 cursor-pointer" onClick={() => setAddNotice(true)}>Upload Notices</Button>
                 </div>
 
@@ -162,7 +162,6 @@ const TeacherNoticeComponent = () => {
                 {/* Pagination */}
                 <Pagination className="my-10 flex justify-center">
                     <PaginationContent>
-
                         {/* Previous */}
                         <PaginationItem>
                             <PaginationPrevious
@@ -185,7 +184,7 @@ const TeacherNoticeComponent = () => {
                                         setCurrentPage(idx + 1);
                                     }}
                                     className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 border 
-            ${currentPage === idx + 1
+                                        ${currentPage === idx + 1
                                             ? "bg-primary text-primary-foreground border-primary shadow-2xl"
                                             : "bg-background text-foreground border-border hover:bg-muted text-[17px]"
                                         }`}
@@ -206,10 +205,12 @@ const TeacherNoticeComponent = () => {
                                 className="transition-all duration-200 text-foreground hover:bg-muted border border-border rounded-md px-3 py-2 text-[17px]"
                             />
                         </PaginationItem>
-
                     </PaginationContent>
                 </Pagination>
             </div>
+
+
+
 
             {AddNotice && <div className="inset-0 fixed backdrop-blur-[1px]"><AddNoticePopup onCloseAddNotice={onCloseAddNotice} /></div>}
 

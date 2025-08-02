@@ -146,10 +146,9 @@ const TeacherEventComponent = () => {
               <div className="w-[90%]">
                   <h1 className="font-bold text-4xl text-center underline">Event</h1>
 
-                <div className="pt-10">
+                <div className="pt-15">
                     <Button className="text-[18px] py-5 px-10 cursor-pointer" onClick={()=>setAddEvent(true)}>Add Events</Button>
                 </div>
-
 
                   <div className="my-10 flex flex-col gap-y-7">
                       {paginatedEvent.map((val, index) => (
@@ -243,7 +242,6 @@ const TeacherEventComponent = () => {
                                                   className="transition-all duration-200 text-foreground hover:bg-muted border border-border rounded-md px-3 py-2 text-[17px]"
                                               />
                                           </PaginationItem>
-                  
                                       </PaginationContent>
                                   </Pagination>
               </div>

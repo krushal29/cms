@@ -1,8 +1,7 @@
 import profile from '../../../../public/Avatar.png'
 import { Button } from '../../ui/button'
-import { LuCalendarCheck2 } from "react-icons/lu";
 import { useState } from 'react';
-import {  FaTrophy,FaBook,FaHourglassHalf,FaFileAlt  } from "react-icons/fa";
+import { FaBook, FaHourglassHalf, FaFileAlt } from "react-icons/fa";
 import { RiUserAddFill } from "react-icons/ri";
 import { Label } from '../../ui/label'
 import { Input } from '../../ui/input'
@@ -10,7 +9,6 @@ import TeacherPersonalDetails from './TeacherPersonalDetails';
 
 
 const TeacherDashboardComponent = () => {
-    const [StudentDetails, setStudentDetails] = useState("PersonalDetails");
     const [EditProfile, setEditProfile] = useState(false);
 
     const [FilePhoto, setFilePhoto] = useState(profile);
@@ -80,7 +78,7 @@ const TeacherDashboardComponent = () => {
                     <div className='bg-pink-200 w-[28%] border py-4 px-4 border-pink-800 rounded-2xl text-pink-800'>
                         <div className="flex items-center justify-between">
                             <h1 className='text-[17px] font-semibold'>Research Publications</h1>
-                            <FaFileAlt  className="text-[18px]" />
+                            <FaFileAlt className="text-[18px]" />
                         </div>
                         <p className='pt-2 text-[16px] font-semibold'>10</p>
                     </div>

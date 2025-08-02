@@ -36,11 +36,11 @@ export default [
 
     // Teacher Pages
     route('/teacher-dashboard','routes/TeacherPage/TacherDashboard.jsx'),
-    route('/TeacherNotice', 'routes/TeacherPage/TeacherNotice.jsx'),
-    route('/TeacherEvent', 'routes/TeacherPage/TeacherEvent.jsx'),
-    route('/TeacherMaterials','routes/TeacherPage/TeacherMaterials.jsx'),
-    route('/QuizManage','routes/TeacherPage/QuizManage.jsx'),
-    route('/TeacherQuizResult','routes/TeacherPage/QuizResult.jsx'),
+    route('/teacher-notice', 'routes/TeacherPage/TeacherNotice.jsx'),
+    route('/teacher-event', 'routes/TeacherPage/TeacherEvent.jsx'),
+    route('/teacher-materials','routes/TeacherPage/TeacherMaterials.jsx'),
+    route('/quiz-manage','routes/TeacherPage/QuizManage.jsx'),
+    route('/teacher-quiz-result','routes/TeacherPage/QuizResult.jsx'),
     route('/midsemSubmit','routes/TeacherPage/ExamInternalMarksSubmit.jsx'),
     route('/student-achievement-details','routes/TeacherPage/StudentAchivementDetails.jsx'),
     route('/quiz-create','routes/TeacherPage/QuizCreatePage.jsx'),

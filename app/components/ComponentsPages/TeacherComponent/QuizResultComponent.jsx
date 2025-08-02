@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -15,13 +15,15 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '../../ui/pagination';
-
+import { Button } from '../../ui/button'
+import { Input } from "../../ui/input";
 
 const data = [
   {
     id: 1,
     Name: 'Krushal Patel',
     Subject: 'Data Structures',
+    CourseCode: 'CS201',
     Marks: '22/25',
     Date: '12/03/2025',
   },
@@ -29,6 +31,7 @@ const data = [
     id: 2,
     Name: 'Ayesha Khan',
     Subject: 'Operating Systems',
+    CourseCode: 'CS301',
     Marks: '18/25',
     Date: '13/03/2025',
   },
@@ -36,6 +39,7 @@ const data = [
     id: 3,
     Name: 'Ravi Mehta',
     Subject: 'Web Development',
+    CourseCode: 'WD101',
     Marks: '20/25',
     Date: '13/03/2025',
   },
@@ -43,6 +47,7 @@ const data = [
     id: 4,
     Name: 'Sneha Verma',
     Subject: 'C++ Programming',
+    CourseCode: 'CS105',
     Marks: '25/25',
     Date: '14/03/2025',
   },
@@ -50,6 +55,7 @@ const data = [
     id: 5,
     Name: 'Krushal Bhadiyadra',
     Subject: 'Machine Learning',
+    CourseCode: 'ML401',
     Marks: '24/25',
     Date: '14/03/2025',
   },
@@ -57,6 +63,7 @@ const data = [
     id: 6,
     Name: 'Jay Shah',
     Subject: 'Cybersecurity',
+    CourseCode: 'CS410',
     Marks: '17/25',
     Date: '15/03/2025',
   },
@@ -64,6 +71,7 @@ const data = [
     id: 7,
     Name: 'Ritika Gupta',
     Subject: 'Database Management',
+    CourseCode: 'DB202',
     Marks: '21/25',
     Date: '15/03/2025',
   },
@@ -71,6 +79,7 @@ const data = [
     id: 8,
     Name: 'Anil Yadav',
     Subject: 'Computer Networks',
+    CourseCode: 'CS305',
     Marks: '19/25',
     Date: '16/03/2025',
   },
@@ -78,6 +87,7 @@ const data = [
     id: 9,
     Name: 'Priya Desai',
     Subject: 'AI & ML',
+    CourseCode: 'AI403',
     Marks: '23/25',
     Date: '16/03/2025',
   },
@@ -85,6 +95,7 @@ const data = [
     id: 10,
     Name: 'Vikram Chauhan',
     Subject: 'Software Engineering',
+    CourseCode: 'SE301',
     Marks: '20/25',
     Date: '17/03/2025',
   },
@@ -92,6 +103,7 @@ const data = [
     id: 11,
     Name: 'Vikram Chauhan',
     Subject: 'Software Engineering',
+    CourseCode: 'SE301',
     Marks: '20/25',
     Date: '17/03/2025',
   },
@@ -99,17 +111,40 @@ const data = [
 
 const QuizResultComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [Data, setdata] = useState(data);
+  const [courseCode, setCourseCode] = useState();
   const itemsPerPage = 10;
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const paginatedQuiz = data.slice(
+
+
+  // useEffect(() => {
+  //   const filterData = Data.filter((val, index) => val.CourseCode.includes(courseCode));
+  //   setdata(filterData);
+  // }, [courseCode])
+  // console.log(Data);
+
+
+  const totalPages = Math.ceil(Data.length / itemsPerPage);
+  const paginatedQuiz = Data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+
+
+
   return (
     <div className='bg-background min-h-[50.8vh] flex justify-center py-10'>
       <div className='w-[80%]'>
         <h1 className="font-bold text-4xl text-center underline">Quiz Section</h1>
+
+        {/* Filter Data using Course code */}
+
+        <div className="w-1/3 mt-15">
+          <Input type="text" className="bg-white border border-black shadow-2xl" placeholder="Enter a Course code" name="courseCode" value={courseCode} onChange={(e) => setCourseCode(e.target.value)} />
+        </div>
+
+
         <div className="py-10 drop-shadow-lg shadow-ring">
           <Table className="bg-white rounded-[7px]">
             <TableHeader>
@@ -119,16 +154,18 @@ const QuizResultComponent = () => {
                 <TableHead className="font-bold text-[17px]">Subject</TableHead>
                 <TableHead className="font-bold text-[17px]">marks</TableHead>
                 <TableHead className="font-bold text-[17px]">Date</TableHead>
+                <TableHead className="font-bold text-[17px] w-1/9 text-center">View</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {paginatedQuiz.map((val, index) => (
+              {Data?.map((val, index) => (
                 <TableRow key={index}>
                   <TableCell className="py-3 font-semibold text-[15px]">{index + 1}</TableCell>
                   <TableCell className="font-semibold text-[15px]">{val.Name}</TableCell>
                   <TableCell className="font-semibold text-[15px]">{val.Subject}</TableCell>
                   <TableCell className="font-semibold text-[15px]">{val.Marks}</TableCell>
                   <TableCell className="font-semibold text-[15px]">{val.Date}</TableCell>
+                  <TableCell className="font-semibold"><Button className="bg-blue-200 py-0 px-10 text-black hover:bg-blue-200 cursor-pointer text-[18px]" onClick={() => setViewMakrsIntenalMark(true)}>view</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>
