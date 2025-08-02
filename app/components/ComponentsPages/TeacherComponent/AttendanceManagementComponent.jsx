@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "../../ui/button";
 import { Label } from '../../ui/label'
 import {
@@ -7,12 +8,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../ui/select"
+import {Input} from '../../ui/input'
 
 
 
 const AttendanceData = [
   { id: 1, Enrollment: '12302040501001', Name: 'Krushal Patel' },
-  { id: 2, Enrollment: '12302040501002', Name: 'Ayesha Khan' },
+  { id: 2, Enrollment: '12302040501002', Name: 'Dharmi Naik' },
   { id: 3, Enrollment: '12302040501003', Name: 'Ravi Mehta' },
   { id: 4, Enrollment: '12302040501004', Name: 'Sneha Verma' },
   { id: 5, Enrollment: '12302040501005', Name: 'Jay Shah' },
@@ -43,47 +45,88 @@ const AttendanceData = [
   { id: 30, Enrollment: '12302040501030', Name: 'Bhavya Singh' }
 ];
 
+const subjects = [
+  { label: "Mathematics", value: "mathematics" },
+  { label: "Physics", value: "physics" },
+  { label: "Chemistry", value: "chemistry" },
+  { label: "Biology", value: "biology" },
+  { label: "Computer Science", value: "computer_science" },
+  { label: "English", value: "english" },
+  { label: "History", value: "history" },
+  { label: "Geography", value: "geography" },
+  { label: "Economics", value: "economics" }
+];
+
+
+const branches = [
+  { label: "Computer Science", value: "cs" },
+  { label: "Information Technology", value: "it" },
+  { label: "Electronics & Communication", value: "ec" },
+  { label: "Electrical Engineering", value: "ee" },
+  { label: "Mechanical Engineering", value: "me" },
+  { label: "Civil Engineering", value: "ce" },
+  { label: "Artificial Intelligence", value: "ai" },
+  { label: "Data Science", value: "ds" }
+];
+
+
 
 const AttendanceManagementComponent = () => {
+  const [selectDate,setSelectDate]=useState("");
+  const [selectSubject,setSelectSubject]=useState("");
+  const [selectBranch,setSelectBranch]=useState("");
+
+
+
+  console.log(selectBranch+selectDate+selectBranch,selectSubject);
   return (
     <div className="bg-background min-h-[50.8vh] flex justify-center py-10">
       <div className="w-[80%]">
         <h1 className="font-bold text-4xl text-center underline">Attendance Management</h1>
 
+
         {/* filter Data */}
         <div className='bg-secondary grid grid-cols-3 gap-3 py-5 px-5 mt-10 rounded-2xl  border border-black'>
+          {/* Select Subject */}
           <div className="space-y-2">
             <Label className="text-base">Select Subject</Label>
-            <Select>
+            <Select onValueChange={(e)=>setSelectSubject(e)}>
               <SelectTrigger className="w-full bg-secondary shadow-2xl" style={{ border: '1px solid black' }}>
                 <SelectValue placeholder="Choose Subject" />
               </SelectTrigger>
               <SelectContent className="bg-secondary">
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                {subjects.map((val,index)=>(
+                  <SelectItem value={val.label} key={index}>{val.value}</SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
+
+          {/* select Branch */}
           <div className="space-y-2">
             <Label className="text-base">Select Branch</Label>
-            <Select>
+            <Select onValueChange={(e)=>setSelectBranch(e)}>
               <SelectTrigger className="w-full bg-secondary shadow-2xl" style={{ border: '1px solid black' }}>
                 <SelectValue placeholder="Choose Branch" />
               </SelectTrigger>
               <SelectContent className="bg-secondary">
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                {branches.map((val,index)=>(
+                  <SelectItem value={val.label} key={index}>{val.value}</SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
+
+          {/* Select Date */}
           <div className="space-y-2">
             <Label className="text-base">Select Date</Label>
             <input
               type="date"
               className="w-full pl-3 pr-4 py-1.5 bg-secondary border border-black shadow-2xl rounded-md text-right placeholder:text-left"
               placeholder="Select date"
+              name="date"
+              value={selectDate}
+              onChange={(e)=>setSelectDate(e.target.value)}
             />
           </div>
         </div>
@@ -99,7 +142,7 @@ const AttendanceManagementComponent = () => {
             <input type="radio" />
           </div>
           {/* Student Details */}
-          <div className="grid grid-cols-4 grid-rows-7 py-10 gap-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-7 py-10 gap-y-5">
             {AttendanceData.map((val, index) => (
               <div key={index}>
                 <div className="flex items-center gap-2">

@@ -16,7 +16,8 @@ const Phdbranch = ["Computer Science"]
 
 const SchoolPrograms = ({ProgramsRef}) => {
   const navigate = useNavigate();
-  const [selectProgram,setSelectProgram]=useState("UG");
+  const [selectProgram, setSelectProgram] = useState("UG");
+
 
   const OnClickNavigate = (data) => {
     // if (data == "Computer Science") {
@@ -45,6 +46,7 @@ const SchoolPrograms = ({ProgramsRef}) => {
       <div className="w-[70%]">
         <h1 className="text-[28px] font-bold underline text-center underline-offset-4">Programs</h1>
         <p className="pt-2 w-[70%] mx-auto text-center font-medium">Discover our wide range of academic programs each designed to foster intellectual growth, practical skills, and career readiness.</p>
+
         <div className="flex py-12">
           {Programs.map((data, index) => (
             <div className="w-full mr-3" key={index}>
@@ -52,6 +54,7 @@ const SchoolPrograms = ({ProgramsRef}) => {
             </div>
           ))}
         </div>
+
 
         <div className="bg-secondary pt-1 pb-10 drop-shadow-lg shadow-ring">
           {

@@ -35,6 +35,7 @@ export default [
 
 
     // Teacher Pages
+    route('/teacher-dashboard','routes/TeacherPage/TacherDashboard.jsx'),
     route('/TeacherNotice', 'routes/TeacherPage/TeacherNotice.jsx'),
     route('/TeacherEvent', 'routes/TeacherPage/TeacherEvent.jsx'),
     route('/TeacherMaterials','routes/TeacherPage/TeacherMaterials.jsx'),

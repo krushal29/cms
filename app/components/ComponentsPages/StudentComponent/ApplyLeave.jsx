@@ -17,7 +17,7 @@ import { Target } from 'lucide-react';
 
 const ApplyLeave = ({ onCloseLeave, form, onChangeHandle,onSubmitHandle }) => {
     return (
-        <div className='shadow-2xl flex justify-center h-screen items-center relative '>
+        <div className='shadow-2xl flex justify-center h-screen items-center relative'>
             <div className='bg-card px-10 py-7 rounded-[10px] w-[34%] relative overflow-y-scroll h-[90%]'>
                 <div className='flex justify-between'>
                     <h1 className='font-semibold text-2xl'>Apply For Leave</h1>

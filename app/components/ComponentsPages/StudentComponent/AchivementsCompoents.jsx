@@ -1,8 +1,6 @@
 import { Button } from '../../ui/button'
-import { MdOutlineFileDownload } from "react-icons/md";
 import { FiAward } from "react-icons/fi";
 import { useState } from 'react';
-import AddAchievements from './AddAchievements';
 import EditAchievements from './EditAchievements';
 
 const data = [
@@ -102,21 +100,7 @@ const data = [
 
 
 const AchivementsCompoents = () => {
-  const [form,setForm]=useState({
-    AchievementTitle:"",
-    AchievementType:"",
-    Location:"",
-    OrganisedBy:"",
-    Date:"",
-    ProvideReason:"",
-    UploadCertificate:""
-  })
-
-  const [showAddAchievement,setShowAddAchievement]=useState(false);
   const [showEditAchievement,setShowEditAchievement]=useState(false);
-  
-
-  const onCloseAchievement=()=>setShowAddAchievement(false);
   const onEditCloseAchievement=()=>setShowEditAchievement(false);
   
   const onEditFilterHandle=(id)=>{
@@ -134,23 +118,12 @@ const AchivementsCompoents = () => {
     setForm(dataObj);
   }
 
-  const onChangeHandle=(e)=>{
-      const {name,value}=e.target;  
-      setForm({...form,[name]:value});
-  }
+
   const onChangeEditHandle=(e)=>{
       const {name,value}=e.target;
       setForm({...form,[name]:value})
   }
 
-  const onSubmitHandle=(e)=>{
-    e.preventDefault();
-    try{
-      console.log(form);
-    }catch(e){
-      console.log(e);
-    }
-  }
 
   const onEditHandle=(e)=>{
     e.preventDefault();
@@ -166,11 +139,8 @@ const AchivementsCompoents = () => {
       <div className='w-[80%] drop-shadow-2xl shadow-ring'>
         <h1 className='font-bold text-4xl text-center underline'>Achivements</h1>
 
-        {/* <div className='flex items-center py-10'>
-          <p className='text-[18px] font-semibold'>Upload Your Achivement :</p>
-          <Button className='ml-5 px-10 cursor-pointer' onClick={()=>setShowAddAchievement(true)}>Upload Achivement <span><MdOutlineFileDownload /></span></Button>
-        </div> */}
 
+      {/* All Achivements */}
         <div className='grid grid-cols-3 gap-10 py-15'>
           {data.map((val, index) => (
             <div className='bg-secondary py-7 px-5 rounded-2xl drop-shadow-lg shadow-ring' key={index}>
@@ -212,8 +182,7 @@ const AchivementsCompoents = () => {
         </div>
       </div>
 
-      {showAddAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><AddAchievements onCloseAchievement={onCloseAchievement} onChangeHandle={onChangeHandle} form={form} onSubmitHandle={onSubmitHandle}/></div>}
-
+  
       {showEditAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><EditAchievements onEditCloseAchievement={onEditCloseAchievement} editData={form} onChangeEditHandle={onChangeEditHandle} onEditHandle={onEditHandle}/></div>}
     </div>
   )
