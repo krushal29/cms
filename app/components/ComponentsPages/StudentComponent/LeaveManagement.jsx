@@ -235,8 +235,7 @@
 
 
 
-import { useEffect, useState } from 'react';
-import { Button } from '../../ui/button';
+import {  useState } from 'react';
 import {
   Table,
   TableBody,
@@ -245,7 +244,6 @@ import {
   TableHeader,
   TableRow,
 } from '../../ui/table';
-import ApplyLeave from './ApplyLeave';
 import {
   Pagination,
   PaginationContent,

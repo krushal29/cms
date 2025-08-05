@@ -121,15 +121,12 @@ const ExamInternalMarksSubmitComponent = () => {
                             </div>
                         </div>
                     ))}
-
-
-
                     <div className="pt-5">
                         <Button className="cursor-pointer text-[17px] py-5 px-10">Submit</Button>
                     </div>
-
-
                 </div>
+
+                
             </div>
         </div>
     )

@@ -21,107 +21,102 @@ import { Input } from "../../ui/input";
 const data = [
   {
     id: 1,
-    Name: 'Krushal Patel',
     Subject: 'Data Structures',
     CourseCode: 'CS201',
-    Marks: '22/25',
     Date: '12/03/2025',
+    QuizNo: 1,
   },
   {
     id: 2,
-    Name: 'Ayesha Khan',
     Subject: 'Operating Systems',
     CourseCode: 'CS301',
-    Marks: '18/25',
     Date: '13/03/2025',
+    QuizNo: 2,
   },
   {
     id: 3,
-    Name: 'Ravi Mehta',
     Subject: 'Web Development',
     CourseCode: 'WD101',
-    Marks: '20/25',
     Date: '13/03/2025',
+    QuizNo: 3,
   },
   {
     id: 4,
-    Name: 'Sneha Verma',
     Subject: 'C++ Programming',
     CourseCode: 'CS105',
-    Marks: '25/25',
     Date: '14/03/2025',
+    QuizNo: 4,
   },
   {
     id: 5,
-    Name: 'Krushal Bhadiyadra',
     Subject: 'Machine Learning',
     CourseCode: 'ML401',
-    Marks: '24/25',
     Date: '14/03/2025',
+    QuizNo: 5,
   },
   {
     id: 6,
-    Name: 'Jay Shah',
     Subject: 'Cybersecurity',
     CourseCode: 'CS410',
-    Marks: '17/25',
     Date: '15/03/2025',
+    QuizNo: 6,
   },
   {
     id: 7,
-    Name: 'Ritika Gupta',
     Subject: 'Database Management',
     CourseCode: 'DB202',
-    Marks: '21/25',
     Date: '15/03/2025',
+    QuizNo: 7,
   },
   {
     id: 8,
-    Name: 'Anil Yadav',
     Subject: 'Computer Networks',
     CourseCode: 'CS305',
-    Marks: '19/25',
     Date: '16/03/2025',
+    QuizNo: 8,
   },
   {
     id: 9,
-    Name: 'Priya Desai',
     Subject: 'AI & ML',
     CourseCode: 'AI403',
-    Marks: '23/25',
     Date: '16/03/2025',
+    QuizNo: 9,
   },
   {
     id: 10,
-    Name: 'Vikram Chauhan',
     Subject: 'Software Engineering',
     CourseCode: 'SE301',
-    Marks: '20/25',
     Date: '17/03/2025',
+    QuizNo: 10,
   },
   {
     id: 11,
-    Name: 'Vikram Chauhan',
     Subject: 'Software Engineering',
     CourseCode: 'SE301',
-    Marks: '20/25',
     Date: '17/03/2025',
+    QuizNo: 11,
   },
 ];
+
 
 const QuizResultComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [Data, setdata] = useState(data);
-  const [courseCode, setCourseCode] = useState();
+  const [courseCode, setCourseCode] = useState("");
   const itemsPerPage = 10;
 
 
 
-  // useEffect(() => {
-  //   const filterData = Data.filter((val, index) => val.CourseCode.includes(courseCode));
-  //   setdata(filterData);
-  // }, [courseCode])
-  // console.log(Data);
+  useEffect(() => {
+    if(courseCode!==" "){
+      const filterData = data?.filter((val, index) => val.CourseCode.includes(courseCode));
+      setdata(filterData);
+    }
+    else{
+      setdata(data);
+    }
+  }, [courseCode])
+  console.log(Data);
 
 
   const totalPages = Math.ceil(Data.length / itemsPerPage);
@@ -150,20 +145,20 @@ const QuizResultComponent = () => {
             <TableHeader>
               <TableRow className="border-b border-black">
                 <TableHead className="font-bold text-[17px]">Sr No.</TableHead>
-                <TableHead className="font-bold text-[17px]">Name</TableHead>
+                <TableHead className="font-bold text-[17px]">Course code</TableHead>
                 <TableHead className="font-bold text-[17px]">Subject</TableHead>
-                <TableHead className="font-bold text-[17px]">marks</TableHead>
+                <TableHead className="font-bold text-[17px]">Quiz number</TableHead>
                 <TableHead className="font-bold text-[17px]">Date</TableHead>
                 <TableHead className="font-bold text-[17px] w-1/9 text-center">View</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {Data?.map((val, index) => (
+              {paginatedQuiz?.map((val, index) => (
                 <TableRow key={index}>
                   <TableCell className="py-3 font-semibold text-[15px]">{index + 1}</TableCell>
-                  <TableCell className="font-semibold text-[15px]">{val.Name}</TableCell>
+                  <TableCell className="font-semibold text-[15px]">{val.CourseCode}</TableCell>
                   <TableCell className="font-semibold text-[15px]">{val.Subject}</TableCell>
-                  <TableCell className="font-semibold text-[15px]">{val.Marks}</TableCell>
+                  <TableCell className="font-semibold text-[15px] pl-10">{val.QuizNo}</TableCell>
                   <TableCell className="font-semibold text-[15px]">{val.Date}</TableCell>
                   <TableCell className="font-semibold"><Button className="bg-blue-200 py-0 px-10 text-black hover:bg-blue-200 cursor-pointer text-[18px]" onClick={() => setViewMakrsIntenalMark(true)}>view</Button></TableCell>
                 </TableRow>

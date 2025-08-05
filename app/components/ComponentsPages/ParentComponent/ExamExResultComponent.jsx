@@ -2,11 +2,12 @@ import { CgNotes } from "react-icons/cg";
 import { Button } from '../../ui/button'
 import { MdOutlineFileDownload } from "react-icons/md";
 
-const ExamExtenalCompoent = () => {
-    return (
-        <div className="bg-background min-h-[50.8vh] flex justify-center py-15">
+const ExamExResultComponent = () => {
+  return (
+     <div className="bg-background min-h-[50.8vh] flex justify-center py-15">
             <div className="w-[80%]">
                 <h1 className="font-bold text-4xl text-center underline">Examination Details</h1>
+
 
                 <div className="py-15 space-y-8">
                     {[0, 1, 2, 3, 4].map((val, index) => (
@@ -26,10 +27,10 @@ const ExamExtenalCompoent = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div>    
             </div>
         </div>
-    )
+  )
 }
 
-export default ExamExtenalCompoent
+export default ExamExResultComponent

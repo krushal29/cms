@@ -81,7 +81,7 @@ const QuizManageComponent = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 4;
 
-    const totalPages = Math.ceil(data.length / itemsPerPage);
+    const totalPages = Math.ceil(QuizData.length / itemsPerPage);
     const paginatedQuiz = QuizData.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
@@ -125,10 +125,10 @@ const QuizManageComponent = () => {
 
                             <div className="flex flex-col gap-2">
                                 <div>
-                                    <Button className="bg-[#d4d4d8] border-1 border-black hover:bg-#d4d4d8 cursor-pointer" onClick={() => OnDeleteQuiz(val.id)}><RiDeleteBin6Line className="size-5 text-black" /></Button>
+                                    <Button className="bg-[#d4d4d8] border-1 border-black hover:bg-#d4d4d8 cursor-pointer" onClick={() => OnDeleteQuiz(val.id)}><RiDeleteBin6Line className="size-5 text-gray-700" /></Button>
                                 </div>
                                 <div>
-                                    <Button className="bg-[#d4d4d8] border-1 border-black hover:bg-[#d4d4d8] cursor-pointer"><LuPencilLine className="size-5 text-black" /></Button>
+                                    <Button className="bg-[#d4d4d8] border-1 border-black hover:bg-[#d4d4d8] cursor-pointer"><LuPencilLine className="size-5 text-gray-700" /></Button>
                                 </div>
                             </div>
                         </div>

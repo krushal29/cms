@@ -41,7 +41,8 @@ export default [
     route('/teacher-materials','routes/TeacherPage/TeacherMaterials.jsx'),
     route('/quiz-manage','routes/TeacherPage/QuizManage.jsx'),
     route('/teacher-quiz-result','routes/TeacherPage/QuizResult.jsx'),
-    route('/midsemSubmit','routes/TeacherPage/ExamInternalMarksSubmit.jsx'),
+    route('/event-student-list','routes/TeacherPage/EventStudentList.jsx'),
+    route('/mid-sem-submit','routes/TeacherPage/ExamInternalMarksSubmit.jsx'),
     route('/student-achievement-details','routes/TeacherPage/StudentAchivementDetails.jsx'),
     route('/quiz-create','routes/TeacherPage/QuizCreatePage.jsx'),
     route('/quiz-add-question','routes/TeacherPage/QuizAddQuestion.jsx'),
@@ -51,6 +52,12 @@ export default [
 
     // route('/ExtraPopup','components/ComponentsPages/TeacherComponent/popupComponent/EditMarksInternalVivaPopup.jsx')
 
+    // parent Pages
+    route('/parent-leave','routes/ParentPage/LeavePage.jsx'),
+    route('/parent-attendance','routes/ParentPage/AttendancePage.jsx'),
+    route('/exam-result','routes/ParentPage/ExamExResultPage.jsx'),
+    route('/exam-internal','routes/ParentPage/ExamInternalPage.jsx'),
+    route('/quiz-result','routes/ParentPage/QuizResultPage.jsx'),
 
 
 

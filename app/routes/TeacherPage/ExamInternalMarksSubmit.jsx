@@ -6,9 +6,9 @@ import TeacherLayout from '../../components/ComponentsPages/TeacherComponent/Tea
 const ExamInternalMarksSubmit = () => {
   return (
     <TeacherLayout>
-      {/* <ExamInternalMarksSubmitComponent/> */}
+      <ExamInternalMarksSubmitComponent/>
       {/* <ExamInternalMarksSubmitEditComponent/> */}
-      <ExamInternalMarksSubmitSaveComponent/>
+      {/* <ExamInternalMarksSubmitSaveComponent/> */}
     </TeacherLayout>
   )
 }

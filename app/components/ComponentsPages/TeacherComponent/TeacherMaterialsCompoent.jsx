@@ -163,6 +163,7 @@ const TeacherMaterialsCompoent = () => {
         </div>
 
 
+      {/* table material show */}
         <div className="py-10 drop-shadow-lg shadow-ring">
           <Table className="bg-white rounded-[7px]">
             <TableHeader>
@@ -239,8 +240,6 @@ const TeacherMaterialsCompoent = () => {
             </PaginationContent>
           </Pagination>
         </div>
-
-
       </div>
 
       {/* popup */}
