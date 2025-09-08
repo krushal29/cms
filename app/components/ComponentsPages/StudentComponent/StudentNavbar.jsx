@@ -71,7 +71,7 @@ const AppSidebar = () => {
   };
   //   // End of Leave Popup
 
-  const onLogout = () => { }
+
 
   // Fees Pay popup
   const [showPaypopup, setShowPayPopup] = useState(false);
@@ -112,7 +112,7 @@ const AppSidebar = () => {
   // End of Verify Popup
 
 
-   // Achievement Popup
+  // Achievement Popup
   const [showAddAchievement, setShowAddAchievement] = useState(false);
   const [Achievementform, AchievementsetForm] = useState({
     AchievementTitle: "",
@@ -125,7 +125,7 @@ const AppSidebar = () => {
   })
   const onCloseAchievement = () => setShowAddAchievement(false);
 
-  const onShowAchievement =()=>setShowAddAchievement(true);
+  const onShowAchievement = () => setShowAddAchievement(true);
   const onChangeAchievementHandle = (e) => {
     const { name, value } = e.target;
     AchievementsetForm({ ...Achievementform, [name]: value });
@@ -142,6 +142,10 @@ const AppSidebar = () => {
 
   // End of Achievement Popup
 
+
+
+  const onLogout = () => { }
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -151,42 +155,42 @@ const AppSidebar = () => {
             <SidebarMenu className="mt-5">
 
               {/* Dashboard */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentDashBoard" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentDashBoard")}>
                   <FaHome /> Dashboard
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
               {/* Attendance */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentAttendance" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentAttendance")}>
                   <MdHowToReg /> Attendance
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
               {/* Materials */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentMaterial" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentMaterial")}>
                   <FaBook /> Materials
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
               {/* Events */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentEvent" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentEvent")}>
                   <FaCalendarAlt /> Events
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
               {/* Notices */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentNotice" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentNotice")}>
                   <FaBullhorn /> Notices
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
               {/* Achievements */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentAchievements" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenAchievements(!openAchievements)}>
                   <FaTrophy /> Achievements Section {openAchievements ? "▾" : "▸"}
                 </SidebarMenuButton>
@@ -203,7 +207,7 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               {/* Fees */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentFees" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenFees(!openFees)}>
                   <FaMoneyBillWave /> Fees Section {openFees ? "▾" : "▸"}
                 </SidebarMenuButton>
@@ -223,7 +227,7 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               {/* Leave */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentLeave" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenLeave(!openLeave)}>
                   <FaSignOutAlt /> Leave Section {openLeave ? "▾" : "▸"}
                 </SidebarMenuButton>
@@ -240,7 +244,7 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               {/* Quiz */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/QuizUpcomming" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenQuiz(!openQuiz)}>
                   <FaQuestionCircle /> Quiz Section {openQuiz ? "▾" : "▸"}
                 </SidebarMenuButton>
@@ -257,7 +261,7 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               {/* Exam */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px] ${location.pathname === "/ExamInternal" || location.pathname === "/ExamExtenal" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenExam(!openExam)}>
                   <FaClipboardList /> Exam Section {openExam ? "▾" : "▸"}
                 </SidebarMenuButton>
@@ -274,7 +278,7 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               {/* Logout */}
-              <SidebarMenuItem>
+              <SidebarMenuItem className="mt-2">
                 <SidebarMenuButton className={`text-[15px]`} onClick={onLogout}>
                   <MdLogout /> Logout
                 </SidebarMenuButton>

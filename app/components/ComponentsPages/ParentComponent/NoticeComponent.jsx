@@ -81,7 +81,7 @@ const data = [
   },
 ];
 
-const Notices = () => {
+const NoticeComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -183,4 +183,4 @@ const Notices = () => {
   );
 };
 
-export default Notices;
+export default NoticeComponent;

@@ -58,14 +58,18 @@ export default [
 
     // route('/ExtraPopup','components/ComponentsPages/TeacherComponent/popupComponent/EditMarksInternalVivaPopup.jsx')
 
+
+
     // parent Pages
+    route('/parent-dashboard','routes/ParentPage/ParentDashboard.jsx'),
     route('/parent-leave', 'routes/ParentPage/LeavePage.jsx'),
     route('/parent-attendance', 'routes/ParentPage/AttendancePage.jsx'),
-    route('/exam-result', 'routes/ParentPage/ExamExResultPage.jsx'),
+    route('/exam-external-result', 'routes/ParentPage/ExamExResultPage.jsx'),
     route('/exam-internal', 'routes/ParentPage/ExamInternalPage.jsx'),
     route('/quiz-result', 'routes/ParentPage/QuizResultPage.jsx'),
     route('/student-achievements', 'routes/ParentPage/AchievementsPage.jsx'),
     route('/Fees-details', 'routes/ParentPage/FeesPage.jsx'),
+    route('/parent-notice','routes/ParentPage/NoticePage.jsx')
 
 
 ] satisfies RouteConfig;

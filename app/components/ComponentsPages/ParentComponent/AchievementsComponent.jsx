@@ -58,15 +58,6 @@ const data = [
     Location: "Anand",
   },
   {
-    id: 7,
-    heading: "Sports Championship",
-    Type: "Sports",
-    desc: "Gold medalist in Inter-college Table Tennis",
-    OrganisedBy: "CVM Sports Committee",
-    Date: "2024-01-12",
-    Location: "GCET College",
-  },
-  {
     id: 8,
     heading: "Internship Completion",
     Type: "Professional",
