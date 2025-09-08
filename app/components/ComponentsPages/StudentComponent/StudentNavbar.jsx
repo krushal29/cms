@@ -1,40 +1,59 @@
-// Import additional icons if needed
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+} from "../../ui/sidebar";
 import { useNavigate } from "react-router";
-import { IoReorderThreeOutline } from "react-icons/io5";
 import { useState } from "react";
+
 import {
   FaHome, FaBook, FaCalendarAlt, FaBullhorn,
-  FaTrophy, FaMoneyBillWave, FaSignOutAlt, FaTimes,FaQuestionCircle , FaClipboardList,FaCreditCard,FaCheckCircle,FaPaperPlane,FaCloudUploadAlt
+  FaTrophy, FaMoneyBillWave, FaSignOutAlt,
+  FaCloudUploadAlt, FaCreditCard, FaCheckCircle,
+  FaQuestionCircle, FaClipboardList, FaPaperPlane
 } from "react-icons/fa";
-import { MdQuiz, MdHowToReg, MdAssessment,MdLogout } from "react-icons/md";
+import { MdQuiz, MdAssessment, MdHowToReg, MdLogout } from "react-icons/md";
 import { GiGraduateCap } from "react-icons/gi";
+import { useLocation } from "react-router";
 import ApplyLeave from "./ApplyLeave";
 import AddAchievements from "./AddAchievements";
 import PayFeePopup from "./PayFeePopup";
 import VerifyFees from "./VerifyFees";
 
 
-const StudentNavbar = () => {
+const AppSidebar = () => {
   const navigate = useNavigate();
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [showQuizClick,setshowQuizClick]=useState(false);
-  const [showExamClick,setShowExamClick]=useState(false);
-  const [showFeesClick,setShowFeeClick]=useState(false);
-  const [showAchievementsClick,setshowAchievementsClick]=useState(false);
-  
-  
+  const location = useLocation();
+  console.log("location", location.pathname);
+
+
+
+  // collapsible toggles
+  const [openAchievements, setOpenAchievements] = useState(false);
+  const [openFees, setOpenFees] = useState(false);
+  const [openLeave, setOpenLeave] = useState(false);
+  const [openQuiz, setOpenQuiz] = useState(false);
+  const [openExam, setOpenExam] = useState(false);
+
+
   //Leave Popup
-  const [showLeaveClick,setShowLeaveClick]=useState(false);
-    const [form, setForm] = useState({
-      EnrollmentNumber: '',
-      LeaveType: '',
-      FromDate: '',
-      ToDate: '',
-      ProvideReason: '',
-      UploadCertificate: '',
-    });
+  const [form, setForm] = useState({
+    EnrollmentNumber: '',
+    LeaveType: '',
+    FromDate: '',
+    ToDate: '',
+    ProvideReason: '',
+    UploadCertificate: '',
+  });
   const [LeavePopup, setLeavePopup] = useState(false);
-    const onCloseLeave = () => {
+  const onShowLeave = () => setLeavePopup(true)
+  const onCloseLeave = () => {
     setLeavePopup(false);
   };
   const onChangeHandle = (e) => {
@@ -50,249 +69,225 @@ const StudentNavbar = () => {
       console.log(e);
     }
   };
-  // End of Leave Popup
+  //   // End of Leave Popup
 
-  // Achievement Popup
-  const [showAddAchievement,setShowAddAchievement]=useState(false);
-    const [Achievementform,AchievementsetForm]=useState({
-    AchievementTitle:"",
-    AchievementType:"",
-    Location:"",
-    OrganisedBy:"",
-    Date:"",
-    ProvideReason:"",
-    UploadCertificate:""
+  const onLogout = () => { }
+
+  // Fees Pay popup
+  const [showPaypopup, setShowPayPopup] = useState(false);
+
+  const onShowPay = () => setShowPayPopup(true);
+  const onClosePayPopup = () => setShowPayPopup(false);
+
+  // End of pay popup
+
+
+  //Verify popup
+  const [showVerifyPopup, setShowVerifyPopup] = useState(false);
+  const [verifyform, setverifyForm] = useState({
+    EnrollmentNumber: "",
+    Semester: "",
+    Amount: "",
+    PaymentType: "",
+    UploadReceipt: ""
   })
-  const onCloseAchievement=()=>setShowAddAchievement(false);
 
-  const onChangeAchievementHandle=(e)=>{
-      const {name,value}=e.target;  
-      AchievementsetForm({...Achievementform,[name]:value});
+  const onShowVerify = () => setShowVerifyPopup(true);
+
+  const onChangeVerifyHandle = (e) => {
+    const { name, value } = e.target;
+    setverifyForm({ ...verifyform, [name]: value })
   }
 
-    const onSubmitAchievementHandle=(e)=>{
+  const onVerifySubmit = (e) => {
     e.preventDefault();
-    try{
+    try {
+      console.log(verifyform);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const onCloseVerifyPopup = () => setShowVerifyPopup(false);
+  // End of Verify Popup
+
+
+   // Achievement Popup
+  const [showAddAchievement, setShowAddAchievement] = useState(false);
+  const [Achievementform, AchievementsetForm] = useState({
+    AchievementTitle: "",
+    AchievementType: "",
+    Location: "",
+    OrganisedBy: "",
+    Date: "",
+    ProvideReason: "",
+    UploadCertificate: ""
+  })
+  const onCloseAchievement = () => setShowAddAchievement(false);
+
+  const onShowAchievement =()=>setShowAddAchievement(true);
+  const onChangeAchievementHandle = (e) => {
+    const { name, value } = e.target;
+    AchievementsetForm({ ...Achievementform, [name]: value });
+  }
+
+  const onSubmitAchievementHandle = (e) => {
+    e.preventDefault();
+    try {
       console.log(Achievementform);
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
 
   // End of Achievement Popup
 
-
-  // Fees Pay popup
-    const [showPaypopup, setShowPayPopup] = useState(false);
-
-    const onClosePayPopup = () => setShowPayPopup(false);
-
-    // End of pay popup
-
-
-
-    //Verify popup
-     const [showVerifyPopup, setShowVerifyPopup] = useState(false);
-      const [verifyform, setverifyForm] = useState({
-        EnrollmentNumber: "",
-        Semester: "",
-        Amount: "",
-        PaymentType: "",
-        UploadReceipt: ""
-    })
-
-    const onChangeVerifyHandle = (e) => {
-        const { name, value } = e.target;
-        setverifyForm({ ...verifyform, [name]: value })
-    }
-
-    const onVerifySubmit = (e) => {
-        e.preventDefault();
-        try {
-            console.log(verifyform);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const onCloseVerifyPopup = () => setShowVerifyPopup(false);
-    // End of Verify Popup
-
-
-
-    // logout
-    const LogoutHandle=()=>{
-      alert("Logout Successfull")
-    }
-
   return (
-    <div className="bg-secondary flex justify-center">
-      <div className="flex justify-between items-center w-[95%] py-3">
-        <h5
-          className="font-bold text-xl cursor-pointer"
-          onClick={() => navigate('/StudentDashBoard')}
-        >
-          Grand Valley College
-        </h5>
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel><h2 className="text-xl font-bold text-gray-800 mt-5">Student</h2></SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu className="mt-5">
 
-        {!showSidebar && (
-          <IoReorderThreeOutline
-            className="text-4xl  cursor-pointer"
-            onClick={() => setShowSidebar(true)}
-          />
-        )}
-      </div>
+              {/* Dashboard */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentDashBoard" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentDashBoard")}>
+                  <FaHome /> Dashboard
+                </SidebarMenuButton>
+              </SidebarMenuItem>
 
+              {/* Attendance */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentAttendance" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentAttendance")}>
+                  <MdHowToReg /> Attendance
+                </SidebarMenuButton>
+              </SidebarMenuItem>
 
-      {/* Sidebar */}
-      {showSidebar && (
-        <div className="fixed inset-0 z-20 backdrop-blur-[1px]">
-          <div className="absolute top-0 left-0 h-full w-[280px] bg-white shadow-lg p-5 overflow-y-auto ">
-            <div className="flex justify-between items-center border-b pb-3 mb-3">
-              <h2 className="text-lg font-bold text-gray-800">Student</h2>
-              <FaTimes
-                className="text-xl cursor-pointer"
-                onClick={() => setShowSidebar(false)}
-              />
-            </div>
+              {/* Materials */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentMaterial" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentMaterial")}>
+                  <FaBook /> Materials
+                </SidebarMenuButton>
+              </SidebarMenuItem>
 
-            <ul className="flex flex-col gap-4 text-gray-800">
-              <li onClick={() => { navigate('/StudentDashBoard'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaHome /> Dashboard
-              </li>
-              <li onClick={() => { navigate('/StudentAttendance'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <MdHowToReg /> Attendance
-              </li>
-              <li onClick={() => { navigate('/StudentMaterial'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaBook /> Materials
-              </li>
-              <li onClick={() => { navigate('/StudentEvent'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaCalendarAlt /> Events
-              </li>
-              <li onClick={() => { navigate('/StudentNotice'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaBullhorn /> Notices
-              </li>
+              {/* Events */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentEvent" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentEvent")}>
+                  <FaCalendarAlt /> Events
+                </SidebarMenuButton>
+              </SidebarMenuItem>
 
+              {/* Notices */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentNotice" ? 'bg-primary-foreground' : ''}`} onClick={() => navigate("/StudentNotice")}>
+                  <FaBullhorn /> Notices
+                </SidebarMenuButton>
+              </SidebarMenuItem>
 
               {/* Achievements */}
-              <li  onClick={()=>setshowAchievementsClick(!showAchievementsClick)}>
-                <div className="cursor-pointer flex justify-between items-center px-4 py-2 hover:bg-accent rounded-lg">
-                  <div className="flex items-center gap-2">
-                      <FaTrophy /> 
-                      <span>Achievements Section</span>
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentAchievements" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenAchievements(!openAchievements)}>
+                  <FaTrophy /> Achievements Section {openAchievements ? "▾" : "▸"}
+                </SidebarMenuButton>
+                {openAchievements && (
+                  <div className="ml-6 space-y-2">
+                    <SidebarMenuButton onClick={() => navigate("/StudentAchievements")}>
+                      <FaTrophy /> Achievements
+                    </SidebarMenuButton>
+                    <SidebarMenuButton onClick={onShowAchievement}>
+                      <FaCloudUploadAlt /> Upload Achievement
+                    </SidebarMenuButton>
                   </div>
-                 <span>{showAchievementsClick ? '▾' : '▸'}</span>
-                </div>
-                <ul className={`${showAchievementsClick?'block':'hidden'} pt-2 pl-7`}>
-                  <li onClick={() => { navigate('/StudentAchievements'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaTrophy /> Achievements
-              </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg" onClick={()=>{setShowAddAchievement(true);setShowSidebar(false);}}>
-                <FaCloudUploadAlt /> Upload Achivement
-              </li>
-                </ul>
-              </li>
-
-
+                )}
+              </SidebarMenuItem>
 
               {/* Fees */}
-              <li onClick={()=>setShowFeeClick(!showFeesClick)}>
-                <div className="cursor-pointer flex justify-between items-center px-4 py-2 hover:bg-accent rounded-lg">
-                  <div className="flex items-center gap-2">
-                      <FaMoneyBillWave /> {/* Icon for Quiz Section title */}
-                      <span>Fees Section</span>
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentFees" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenFees(!openFees)}>
+                  <FaMoneyBillWave /> Fees Section {openFees ? "▾" : "▸"}
+                </SidebarMenuButton>
+                {openFees && (
+                  <div className="ml-6 space-y-2">
+                    <SidebarMenuButton onClick={() => navigate("/StudentFees")}>
+                      <FaMoneyBillWave /> Fees
+                    </SidebarMenuButton>
+                    <SidebarMenuButton onClick={onShowPay}>
+                      <FaCreditCard /> Pay
+                    </SidebarMenuButton>
+                    <SidebarMenuButton onClick={onShowVerify}>
+                      <FaCheckCircle /> Verify
+                    </SidebarMenuButton>
                   </div>
-                 <span>{showFeesClick ? '▾' : '▸'}</span>
-                </div>
-                <ul className={`${showFeesClick?'block':'hidden'} pt-2 pl-7`}>
-                  <li onClick={() => { navigate('/StudentFees'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaMoneyBillWave /> Fees
-              </li>
-              <li className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg"  onClick={() => {setShowPayPopup(true);setShowSidebar(false)}}>
-                <FaCreditCard /> Pay
-              </li>
-              <li className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg" onClick={() => {setShowVerifyPopup(true);setShowSidebar(false)}}>
-                <FaCheckCircle /> Verify
-              </li>
-                </ul>
-              </li>
-              
+                )}
+              </SidebarMenuItem>
 
-             {/* Leave */}
-              <li onClick={()=>setShowLeaveClick(!showLeaveClick)} >
-                  <div className="cursor-pointer flex justify-between items-center px-4 py-2 hover:bg-accent rounded-lg">
-                  <div className="flex items-center gap-2">
-                      <FaSignOutAlt /> 
-                      <span>Leave Section</span>
+              {/* Leave */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/StudentLeave" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenLeave(!openLeave)}>
+                  <FaSignOutAlt /> Leave Section {openLeave ? "▾" : "▸"}
+                </SidebarMenuButton>
+                {openLeave && (
+                  <div className="ml-6 space-y-2">
+                    <SidebarMenuButton onClick={() => navigate("/StudentLeave")}>
+                      <FaSignOutAlt /> Leave
+                    </SidebarMenuButton>
+                    <SidebarMenuButton onClick={onShowLeave}>
+                      <FaPaperPlane /> Apply for Leave
+                    </SidebarMenuButton>
                   </div>
-                 <span>{showLeaveClick ? '▾' : '▸'}</span>
-                </div>
-                <ul className={`${showLeaveClick?'block':'hidden'} pt-2 pl-7`}>
-                  <li onClick={() => { navigate('/StudentLeave'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <FaSignOutAlt /> Leave
-              </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg" onClick={()=>{
-                    setLeavePopup(true);
-                    setShowSidebar(false);
-                  }}><FaPaperPlane/>Apply for leave</li>
-                </ul>
-              </li>
+                )}
+              </SidebarMenuItem>
 
-
-
-              {/* Quiz Section */}
-              <li onClick={()=>setshowQuizClick(!showQuizClick)}>
-                <div className="cursor-pointer flex justify-between items-center px-4 py-2 hover:bg-accent rounded-lg">
-                   <div className="flex items-center gap-2">
-                      <FaQuestionCircle /> {/* Icon for Quiz Section title */}
-                      <span>Quiz Section</span>
+              {/* Quiz */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/QuizUpcomming" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenQuiz(!openQuiz)}>
+                  <FaQuestionCircle /> Quiz Section {openQuiz ? "▾" : "▸"}
+                </SidebarMenuButton>
+                {openQuiz && (
+                  <div className="ml-6 space-y-2">
+                    <SidebarMenuButton onClick={() => navigate("/QuizUpcomming")}>
+                      <MdQuiz /> Upcoming Quizzes
+                    </SidebarMenuButton>
+                    <SidebarMenuButton onClick={() => navigate("/QuizResult")}>
+                      <MdAssessment /> Quiz Results
+                    </SidebarMenuButton>
                   </div>
-                   <span>{showQuizClick ? '▾' : '▸'}</span>
+                )}
+              </SidebarMenuItem>
+
+              {/* Exam */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px] ${location.pathname === "/ExamInternal" || location.pathname === "/ExamExtenal" ? 'bg-primary-foreground' : ''}`} onClick={() => setOpenExam(!openExam)}>
+                  <FaClipboardList /> Exam Section {openExam ? "▾" : "▸"}
+                </SidebarMenuButton>
+                {openExam && (
+                  <div className="ml-6 space-y-2">
+                    <SidebarMenuButton onClick={() => navigate("/ExamInternal")}>
+                      <GiGraduateCap /> Internal Exam
+                    </SidebarMenuButton>
+                    <SidebarMenuButton onClick={() => navigate("/ExamExtenal")}>
+                      <GiGraduateCap /> External Exam
+                    </SidebarMenuButton>
                   </div>
-                <ul className={`${showQuizClick?'block':'hidden'} pt-2 pl-7`}>
-                   <li onClick={() => { navigate('/QuizUpcomming'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <MdQuiz /> Upcoming Quizzes
-              </li>
-              <li onClick={() => { navigate('/QuizResult'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <MdAssessment /> Quiz Results
-              </li>
-                </ul>
-              </li>
+                )}
+              </SidebarMenuItem>
+
+              {/* Logout */}
+              <SidebarMenuItem>
+                <SidebarMenuButton className={`text-[15px]`} onClick={onLogout}>
+                  <MdLogout /> Logout
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
 
 
 
-              {/* Exam Section */}
-              <li onClick={()=>setShowExamClick(!showExamClick)}>
-                <div className="cursor-pointer flex justify-between items-center px-4 py-2 hover:bg-accent rounded-lg">          
-                 <div className="flex items-center gap-2">
-                   <FaClipboardList /> 
-                   <span>Exam Section</span>
-                 </div>
-                   <span>{showExamClick ? '▾' : '▸'}</span>
-                </div>
-                <ul className={`${showExamClick?'block':'hidden'} pt-2 pl-7`}>
-               <li onClick={() => { navigate('/ExamInternal'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <GiGraduateCap /> Internal Exam
-              </li>
-              <li onClick={() => { navigate('/ExamExtenal'); setShowSidebar(false); }} className="flex items-center gap-2 cursor-pointer hover:bg-accent py-2 px-4 rounded-lg">
-                <GiGraduateCap /> External Exam
-              </li>
-                </ul>  
-                </li>
-
-                {/* Logout */}
-                <li className="cursor-pointer flex items-center gap-2 px-4 py-2 hover:bg-accent rounded-lg" onClick={LogoutHandle}><MdLogout/> Logout</li>
-            </ul>
-          </div>
-        </div>
-      )}
-
-
-
-
-
-      {/* popup + may be change */} 
-       {LeavePopup && (
+      {/* popup + may be change */}
+      {LeavePopup && (
         <div className="backdrop-blur-[3px] fixed inset-0 drop-shadow-lg shadow-ring z-10">
           <ApplyLeave
             onCloseLeave={onCloseLeave}
@@ -303,71 +298,19 @@ const StudentNavbar = () => {
         </div>
       )}
 
-        {/*Achievements+may be change  */}
-        {showAddAchievement&&<div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring z-10'><AddAchievements onCloseAchievement={onCloseAchievement} onChangeHandle={onChangeAchievementHandle} form={Achievementform} onSubmitHandle={onSubmitAchievementHandle}/></div>}
+      {/*Achievements+may be change  */}
+      {showAddAchievement && <div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring z-10'><AddAchievements onCloseAchievement={onCloseAchievement} onChangeHandle={onChangeAchievementHandle} form={Achievementform} onSubmitHandle={onSubmitAchievementHandle} /></div>}
 
 
 
-        {/* Fees Pay+may be change */}
-        {showPaypopup && <div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring z-10'><PayFeePopup onClosePayPopup={onClosePayPopup} /></div>}
+      {/* Fees Pay+may be change */}
+      {showPaypopup && <div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring z-10'><PayFeePopup onClosePayPopup={onClosePayPopup} /></div>}
 
 
-         {/* Verify + may br change */}
-         {showVerifyPopup && <div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring z-10'><VerifyFees onCloseVerifyPopup={onCloseVerifyPopup} verifyform={verifyform} onChangeVerifyHandle={onChangeVerifyHandle} onVerifySubmit={onVerifySubmit}/></div>}
-    </div>
+      {/* Verify + may br change */}
+      {showVerifyPopup && <div className='fixed inset-0 backdrop-blur-[3px] drop-shadow-lg shadow-ring z-10'><VerifyFees onCloseVerifyPopup={onCloseVerifyPopup} verifyform={verifyform} onChangeVerifyHandle={onChangeVerifyHandle} onVerifySubmit={onVerifySubmit} /></div>}
+    </Sidebar>
   );
 };
 
-export default StudentNavbar;
-
-
-
-// import {
-//   Sidebar,
-//   SidebarContent,
-//   SidebarGroup,
-//   SidebarGroupContent,
-//   SidebarGroupLabel,
-//   SidebarMenu,
-//   SidebarMenuButton,
-//   SidebarMenuItem,
-// } from "../../ui/sidebar"
- 
-
-// const StudentNavbar = () => {
-//   const items = [
-//     { title: "Dashboard", url: "/StudentDashBoard" },
-//     { title: "Attendance", url: "/StudentAttendance" },
-//     { title: "Materials", url: "/StudentMaterial" },
-//     { title: "Events", url: "/StudentEvent" },
-//     { title: "Notices", url: "/StudentNotice" },
-//     { title: "Achievements", url: "/StudentAchievements" },
-//     { title: "Fees", url: "/StudentFees" },
-//     { title: "Apply for Leave", url: "/StudentLeave" },
-//   ];
-
-//   return (
-//      <Sidebar>
-//       <SidebarContent>
-//         <SidebarGroup>
-//           <SidebarGroupLabel>Student Menu</SidebarGroupLabel>
-//           <SidebarGroupContent>
-//             <SidebarMenu>
-//               {items.map((item) => (
-//                 <SidebarMenuItem key={item.title}>
-//                   <SidebarMenuButton asChild>
-//                     <a href={item.url}>
-//                       <span>{item.title}</span>
-//                     </a>
-//                   </SidebarMenuButton>
-//                 </SidebarMenuItem>
-//               ))}
-//             </SidebarMenu>
-//           </SidebarGroupContent>
-//         </SidebarGroup>
-//       </SidebarContent>
-//     </Sidebar>
-//   )
-// }
-
-// export default StudentNavbar
+export default AppSidebar;

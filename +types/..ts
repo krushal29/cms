@@ -11,7 +11,7 @@ export type Info = {
   parents: [Parent0],
   id: "/"
   file: "../../../../"
-  path: "/exam-result"
+  path: "/add-internal-th"
   params: {} & { [key: string]: string | undefined }
   module: Module
   loaderData: T.CreateLoaderData<Module>

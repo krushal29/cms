@@ -25,7 +25,7 @@ const AddNoticePopup = ({ onCloseAddNotice }) => {
     }
     return (
         <div className='shadow-2xl flex justify-center h-screen items-center relative '>
-            <div className='bg-card  px-10 pt-7 rounded-[10px] w-[45%] relative'>
+            <div className='bg-card px-10 pt-7 rounded-[10px] w-[39%] relative'>
                 <div className='flex justify-between'>
                     <h1 className='font-semibold text-2xl'>Add Notices</h1>
                     <p><IoClose className='cursor-pointer text-2xl absolute right-3 top-4' onClick={onCloseAddNotice} /></p>
@@ -36,7 +36,7 @@ const AddNoticePopup = ({ onCloseAddNotice }) => {
                 <div className='grid grid-cols-3 gap-3 bg-white py-5 px-5 mt-5 rounded-2xl  border border-black'>
                     <div>
                         <Select>
-                            <SelectTrigger className="w-full bg-secondary">
+                            <SelectTrigger className="w-full bg-secondary data-[placeholder]:text-[10px]">
                                 <SelectValue placeholder="Choose Whom to send" />
                             </SelectTrigger>
                             <SelectContent className="bg-secondary">
@@ -48,7 +48,7 @@ const AddNoticePopup = ({ onCloseAddNotice }) => {
                     </div>
                     <div>
                         <Select>
-                            <SelectTrigger className="w-full bg-secondary">
+                            <SelectTrigger className="w-full bg-secondary data-[placeholder]:text-[10px]">
                                 <SelectValue placeholder="Choose Branch" />
                             </SelectTrigger>
                             <SelectContent className="bg-secondary">
@@ -60,7 +60,7 @@ const AddNoticePopup = ({ onCloseAddNotice }) => {
                     </div>
                     <div>
                         <Select>
-                            <SelectTrigger className="w-full bg-secondary">
+                            <SelectTrigger className="w-full bg-secondary data-[placeholder]:text-[10px]">
                                 <SelectValue placeholder="Choose Sem" />
                             </SelectTrigger>
                             <SelectContent className="bg-secondary">

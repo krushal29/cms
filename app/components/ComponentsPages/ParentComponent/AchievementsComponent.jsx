@@ -1,7 +1,6 @@
 import { Button } from '../../ui/button'
 import { FiAward } from "react-icons/fi";
-import { useState } from 'react';
-import EditAchievements from './EditAchievements';
+
 
 const data = [
   {
@@ -96,53 +95,14 @@ const data = [
   },
 ];
 
-
-
-
-const AchivementsCompoents = () => {
-  const [showEditAchievement, setShowEditAchievement] = useState(false);
-  const [form, setForm] = useState();
-  const onEditCloseAchievement = () => setShowEditAchievement(false);
-
-  const onEditFilterHandle = (id) => {
-    setShowEditAchievement(true);
-
-    const filterData = data.find((val) => val.id == id);
-    const dataObj = {
-      AchievementTitle: filterData.heading,
-      AchievementType: filterData.Type,
-      Location: filterData.Location,
-      OrganisedBy: filterData.OrganisedBy,
-      Date: filterData.Date,
-      ProvideReason: filterData.desc,
-
-    }
-    setForm(dataObj);
-  }
-
-
-  const onChangeEditHandle = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value })
-  }
-
-
-  const onEditHandle = (e) => {
-    e.preventDefault();
-    try {
-      console.log(form);
-    } catch (e) {
-      console.log(e);
-    }
-
-  }
-  return (
+const AchievementsComponent = () => {
+    return (
     <div className='bg-background min-h-[50.8vh] flex justify-center py-10'>
       <div className='w-[80%] drop-shadow-2xl shadow-ring'>
         <h1 className='font-bold text-4xl text-center underline'>Achivements</h1>
 
 
-        {/* All Achivements */}
+      {/* All Achivements */}
         <div className='grid grid-cols-3 gap-10 py-15'>
           {data.map((val, index) => (
             <div className='bg-secondary py-7 px-5 rounded-2xl drop-shadow-lg shadow-ring' key={index}>
@@ -151,7 +111,7 @@ const AchivementsCompoents = () => {
               </div>
 
               <div className='flex items-center pt-3'>
-                <p><FiAward className='text-xl' /></p>
+                <p><FiAward className='text-xl'/></p>
                 <p className='text-xl font-semibold pl-2'>{val.heading}</p>
               </div>
 
@@ -174,9 +134,9 @@ const AchivementsCompoents = () => {
                 </div>
               </div>
 
-              <div className='pt-4 w-full space-x-8  flex'>
-                <Button className='bg-primary-foreground text-black w-[45%] hover:bg-primary-foreground cursor-pointer border border-gray'>View Certificate</Button>
-                <Button className='w-[45%] bg-primary-foreground text-black hover:bg-primary-foreground cursor-pointer border border-gray' onClick={() => onEditFilterHandle(val.id)}>Edit</Button>
+              <div className='pt-4 w-full space-x-8'>
+                <Button className='bg-primary-foreground text-black w-full hover:bg-primary-foreground cursor-pointer border border-gray'>View Certificate</Button>
+                {/* <Button className='w-[45%] bg-primary-foreground text-black hover:bg-primary-foreground cursor-pointer border border-gray' onClick={()=>onEditFilterHandle(val.id)}>Edit</Button> */}
               </div>
             </div>
           ))}
@@ -184,10 +144,10 @@ const AchivementsCompoents = () => {
         </div>
       </div>
 
-
-      {showEditAchievement && <div className='fixed inset-0 backdrop-blur-[1px] drop-shadow-lg shadow-ring'><EditAchievements onEditCloseAchievement={onEditCloseAchievement} editData={form} onChangeEditHandle={onChangeEditHandle} onEditHandle={onEditHandle} /></div>}
+  
+     
     </div>
   )
 }
 
-export default AchivementsCompoents
+export default AchievementsComponent

@@ -57,6 +57,10 @@ const data=[
   },
 ]
 
+
+
+
+
 const Materials = () => {
   return (
     <div className="bg-background min-h-[50.8vh] flex justify-center py-8">
@@ -66,7 +70,6 @@ const Materials = () => {
 
 
         <div className="bg-secondary flex flex-wrap items-center justify-between px-6 py-5 rounded-2xl mt-12 shadow-lg">
-
           {/* Search By: Label + Dropdown */}
           <div className="flex items-center w-full sm:w-1/3 mb-4 sm:mb-0 ">
             <p className="text-xl whitespace-nowrap mr-4">Search by:</p>
@@ -138,17 +141,17 @@ const Materials = () => {
               </div> */}
 
               <div className="pt-4">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <p className="font-semibold">Subject :</p>
-                  <p>{val.subjectName}</p>
+                  <p className="text-[15px]">{val.subjectName}</p>
                 </div>
-                <div className="flex justify-between pt-2">
+                <div className="flex justify-between pt-2 items-center">
                   <p className="font-semibold">Course Code :</p>
-                  <p>{val.CourseCode}</p>
+                  <p className="text-[15px]">{val.CourseCode}</p>
                 </div>
-                <div className="flex justify-between pt-1">
+                <div className="flex justify-between pt-1 items-center">
                   <p className="font-semibold">Uploaded On :</p>
-                  <p>{val.UploadedOn}</p>
+                  <p className="text-[15px]">{val.UploadedOn}</p>
                 </div>
               </div>
 

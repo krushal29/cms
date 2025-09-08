@@ -129,18 +129,18 @@ const QuizResultComponent = () => {
 
 
   return (
-    <div className='bg-background min-h-[50.8vh] flex justify-center py-10'>
+    <div className='bg-background min-h-[50.8vh] flex justify-center py-12'>
       <div className='w-[80%]'>
         <h1 className="font-bold text-4xl text-center underline">Quiz Section</h1>
 
         {/* Filter Data using Course code */}
 
-        <div className="w-1/3 mt-15">
+        <div className="w-1/3 mt-13">
           <Input type="text" className="bg-white border border-black shadow-2xl" placeholder="Enter a Course code" name="courseCode" value={courseCode} onChange={(e) => setCourseCode(e.target.value)} />
         </div>
 
 
-        <div className="py-10 drop-shadow-lg shadow-ring">
+        <div className="py-15 drop-shadow-lg shadow-ring">
           <Table className="bg-white rounded-[7px]">
             <TableHeader>
               <TableRow className="border-b border-black">
