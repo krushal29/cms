@@ -61,7 +61,7 @@ const ExamExternalComponent = () => {
 
 
     // split enrollmentNumbers
-    const columns = 4;
+    const columns = 3;
     const rowsPerColumn = Math.ceil(enrollmentNumbers.length / columns);
 
 
@@ -112,8 +112,8 @@ const ExamExternalComponent = () => {
                 {/* File upload Section */}
                 <div className="mb-8 border border-black rounded-2xl p-4 bg-card">
                         <Label className="font-semibold">File Upload</Label>
-
                         <Input type="file" className="bg-white mt-3 cursor-pointer"></Input>
+                        <Button className="mt-5 cursor-pointer">Upload File</Button>
                 </div>
 
 
@@ -123,7 +123,7 @@ const ExamExternalComponent = () => {
                     style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
                 >
                     {splitColumns.map((col, colIndex) => (
-                        <div key={colIndex} className="flex flex-col gap-y-4 ">
+                        <div key={colIndex} className="[@media(min-width:600px)]:w-[85%] flex flex-col gap-y-4 ">
                             {col.map((val, index) => {
                                 const number = colIndex * rowsPerColumn + index + 1;
                                 return (

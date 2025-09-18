@@ -11,6 +11,7 @@ import { useState } from "react";
 import AddMarksInternalVivaPopup from "./popupComponent/AddMarksInternalVivaPopup";
 import EditMarksInternalVivaPopup from "./popupComponent/EditMarksInternalVivaPopup";
 import { FaEdit } from "react-icons/fa";
+import { Label } from "../../ui/label";
 
 const enrollmentNumbers = [
     '1230204050001', '1230204050002', '1230204050003', '1230204050004', '1230204050005',
@@ -112,7 +113,7 @@ const ExamInternalVivaAddComponent = () => {
 
 
     // split enrollmentNumbers
-    const columns = 4;
+    const columns = 3;
     const rowsPerColumn = Math.ceil(enrollmentNumbers.length / columns);
 
 
@@ -172,13 +173,13 @@ const ExamInternalVivaAddComponent = () => {
 
                 {/* --- File Upload Section --- */}
                 <div className="mb-8 border border-black rounded-[12px] p-4 bg-card">
-                    <label className="block mb-2 font-semibold">Upload File</label>
+                    <Label className="block mb-2 font-semibold">Upload File</Label>
                     <Input
                         type="file"
                         onChange={(e) => setFile(e.target.files[0])}
                         className="cursor-pointer bg-white"
                     />
-
+                    <Button className="mt-5 cursor-pointer">Upload File</Button>
                 </div>
 
                 {/* --- Enrollment Numbers Grid --- */}
@@ -191,7 +192,7 @@ const ExamInternalVivaAddComponent = () => {
                             {col.map((val, index) => {
                                 const number = colIndex * rowsPerColumn + index + 1;
                                 return (
-                                    <div key={index} className="flex items-center justify-between">
+                                    <div key={index} className="[@media(min-width:600px)]:w-[85%] flex items-center justify-between">
                                         <p className="text-lg font-medium">
                                             {number}. {val} :
                                         </p>

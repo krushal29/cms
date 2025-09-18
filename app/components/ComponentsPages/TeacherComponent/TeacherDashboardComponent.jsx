@@ -35,15 +35,23 @@ const TeacherDashboardComponent = () => {
                             {EditProfile ? <div>
                                 <Label htmlFor="uploadImage" className='cursor-pointer'>
                                     <div id='AddProfile' className='border-2 border-dashed w-full aspect-square bg-gray-100 border-gray-400 flex items-center justify-center rounded-[50%] transition hover:border-blue-500 hover:bg-blue-50'>
-                                        <RiUserAddFill className='text-5xl text-gray-500' />
+                                        <RiUserAddFill className='text-8xl text-gray-500 p-5' />
                                     </div>
                                 </Label>
                                 <Input type="file" hidden id='uploadImage' accept='.jpg' onChange={onFileHandle} />
-                            </div> : <img src={FilePhoto} alt="" className='w-[100%] h-[129.91px] rounded-[50%]' />}
+                            </div> : /* React / JSX */
+                                <div className="profile-photo-wrapper w-28 h-28 sm:w-36 sm:h-36 md:w-44 lg:w-52 2xl:w-[130px] 2xl:h-[130px] rounded-full overflow-hidden flex-shrink-0 ">
+                                    <img
+                                        src={FilePhoto}
+                                        alt="Profile"
+                                        className="w-full h-full object-cover block"
+                                    />
+                                </div>
+                            }
 
 
                         </div>
-                        <div>
+                        <div className='xl:pl-8'>
                             <h1 className='text-3xl font-bold'>John Doe !</h1>
                             <p className='pt-1'>Computer Science and Engineering</p>
                         </div>

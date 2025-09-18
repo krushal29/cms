@@ -115,7 +115,7 @@ const ExamInternalTheoryComponent = () => {
 
 
     // Decide number of columns (example: 4)
-    const columns = 4;
+    const columns = 3;
     const rowsPerColumn = Math.ceil(enrollmentNumbers.length / columns);
 
     // Split enrollmentNumbers evenly across columns
@@ -187,6 +187,7 @@ const ExamInternalTheoryComponent = () => {
                 <div className="bg-card mb-8 border border-black rounded-2xl p-4">
                     <Label className="block mb-2 font-semibold">Upload File</Label>
                     <Input type="file" className="cursor-pointer bg-white" onChange={(e)=>setFile(e.target.files[0])}></Input>
+                    <Button className="mt-5 cursor-pointer">Upload File</Button>
                 </div>
 
 
@@ -201,7 +202,7 @@ const ExamInternalTheoryComponent = () => {
                             {col.map((val, index) => {
                                 const number = colIndex * rowsPerColumn + index + 1;
                                 return (
-                                    <div key={index} className="flex items-center justify-between">
+                                    <div key={index} className=" [@media(min-width:600px)]:w-[85%]  justify-between flex items-center">
                                         <p className="text-lg font-medium">
                                             {number}. {val} :
                                         </p>

@@ -1,15 +1,15 @@
-import { IoCalendarClearOutline,IoTimeOutline,IoLocationOutline   } from "react-icons/io5";
-import {Button} from "../../ui/button";
+import { IoCalendarClearOutline, IoTimeOutline, IoLocationOutline } from "react-icons/io5";
+import { Button } from "../../ui/button";
 import { useState } from "react";
 import AddEventPopup from "./AddEventPopup";
 import EditTeacherEventComponent from "./EditTeacherEventComponent";
 import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 } from "../../ui/pagination";
 
 const data = [
@@ -117,140 +117,132 @@ const data = [
 
 
 const TeacherEventComponent = () => {
-    const [AddEvent,setAddEvent]=useState(false);
-    const [EditEvent,setEditEvent]=useState(false);
-    const [EditData,setEditData]=useState([]);
+  const [EditEvent, setEditEvent] = useState(false);
+  const [EditData, setEditData] = useState([]);
+
+  const OnCloseEditEvent = () => setEditEvent(false)
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const paginatedEvent = data.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const EditHandler = (id) => {
+    setEditEvent(true);
+    const filterData = data.find((val) => val.id == id);
+    setEditData(filterData);
+  }
 
 
-    const onCloseEvent=()=>setAddEvent(false)
-    const OnCloseEditEvent=()=>setEditEvent(false)
+  return (
+    <div className="bg-background min-h-[50.8vh] flex justify-center py-10">
+      <div className="w-[90%]">
+        <h1 className="font-bold text-4xl text-center underline">Event</h1>
 
-     const [currentPage, setCurrentPage] = useState(1);
-        const itemsPerPage = 5;
-    
-        const totalPages = Math.ceil(data.length / itemsPerPage);
-        const paginatedEvent = data.slice(
-            (currentPage - 1) * itemsPerPage,
-            currentPage * itemsPerPage
-        );
-
-    const EditHandler=(id)=>{
-        setEditEvent(true);
-        const filterData=data.find((val)=>val.id==id);
-        setEditData(filterData);
-    }
-
-
-   return (
-          <div className="bg-background min-h-[50.8vh] flex justify-center py-10">
-              <div className="w-[90%]">
-                  <h1 className="font-bold text-4xl text-center underline">Event</h1>
-
-                <div className="pt-15">
-                    <Button className="text-[18px] py-5 px-10 cursor-pointer" onClick={()=>setAddEvent(true)}>Add Events</Button>
+        {/* Event Details */}
+        <div className="my-10 flex flex-col gap-y-7">
+          {paginatedEvent.map((val, index) => (
+            <div className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l-7 border-black" key={index}>
+              <div className="flex justify-between items-center ">
+                <h1 className="font-medium text-2xl">{val.Heading}</h1>
+                <Button className="bg-white text-black hover:bg-white text-[17px] py-5 px-10 cursor-pointer border border-primary font-semibold" onClick={() => EditHandler(val.id)}>Edit</Button>
+              </div>
+              <div className="flex items-center pt-2 text-[15px] space-x-5">
+                <div className="flex items-center">
+                  <div className="font-bold text-[16px]">
+                    <IoCalendarClearOutline />
+                  </div>
+                  <div className="pl-2">
+                    <p>{val.date}</p>
+                  </div>
                 </div>
 
-                  <div className="my-10 flex flex-col gap-y-7">
-                      {paginatedEvent.map((val, index) => (
-                          <div className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l-7 border-black" key={index}>
-                              <div className="flex justify-between items-center ">
-                                  <h1 className="font-medium text-2xl">{val.Heading}</h1>
-                                 <Button className="bg-white text-black hover:bg-white text-[17px] py-5 px-10 cursor-pointer border border-primary font-semibold" onClick={()=>EditHandler(val.id)}>Edit</Button>
-                              </div>
-                              <div className="flex items-center pt-2 text-[15px] space-x-5">
-                                <div className="flex items-center">
-                                  <div className="font-bold text-[16px]">
-                                      <IoCalendarClearOutline />
-                                  </div>
-                                  <div className="pl-2">
-                                      <p>{val.date}</p>
-                                  </div>
-                                </div>
-
-                                <div className="flex items-center">
-                                  <div className="font-bold text-[16px]">
-                                      <IoTimeOutline  />
-                                  </div>
-                                  <div className="pl-1">
-                                      <p>{val.time}</p>
-                                  </div>
-                                </div>
-
-                                <div className="flex items-center">
-                                  <div className="font-bold text-[16px]">
-                                      <IoLocationOutline />
-                                  </div>
-                                  <div className="pl-2">
-                                      <p>{val.Vanue}</p>
-                                  </div>
-                                </div>
-
-
-                              </div>
-                              <div>
-                                  <p className="pt-2 text-[17px]">
-                                      {val.desc}
-                                  </p>
-                              </div>
-                          </div>
-                      ))}
+                <div className="flex items-center">
+                  <div className="font-bold text-[16px]">
+                    <IoTimeOutline />
                   </div>
-                  {/* Pagination */}
-                       <Pagination className="my-10 flex justify-center">
-                                      <PaginationContent>
-                  
-                                          {/* Previous */}
-                                          <PaginationItem>
-                                              <PaginationPrevious
-                                                  href="#"
-                                                  onClick={(e) => {
-                                                      e.preventDefault();
-                                                      if (currentPage > 1) setCurrentPage(currentPage - 1);
-                                                  }}
-                                                  className="transition-all duration-200 text-foreground hover:bg-muted border border-border rounded-md px-3 py-2 text-[17px]"
-                                              />
-                                          </PaginationItem>
-                  
-                                          {/* Page Numbers */}
-                                          {Array.from({ length: totalPages }, (_, idx) => (
-                                              <PaginationItem key={idx}>
-                                                  <PaginationLink
-                                                      href="#"
-                                                      onClick={(e) => {
-                                                          e.preventDefault();
-                                                          setCurrentPage(idx + 1);
-                                                      }}
-                                                      className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 border 
-                              ${currentPage === idx + 1
-                                                              ? "bg-primary text-primary-foreground border-primary shadow-2xl"
-                                                              : "bg-background text-foreground border-border hover:bg-muted text-[17px]"
-                                                          }`}
-                                                  >
-                                                      {idx + 1}
-                                                  </PaginationLink>
-                                              </PaginationItem>
-                                          ))}
-                  
-                                          {/* Next */}
-                                          <PaginationItem>
-                                              <PaginationNext
-                                                  href="#"
-                                                  onClick={(e) => {
-                                                      e.preventDefault();
-                                                      if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-                                                  }}
-                                                  className="transition-all duration-200 text-foreground hover:bg-muted border border-border rounded-md px-3 py-2 text-[17px]"
-                                              />
-                                          </PaginationItem>
-                                      </PaginationContent>
-                                  </Pagination>
+                  <div className="pl-1">
+                    <p>{val.time}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center">
+                  <div className="font-bold text-[16px]">
+                    <IoLocationOutline />
+                  </div>
+                  <div className="pl-2">
+                    <p>{val.Vanue}</p>
+                  </div>
+                </div>
+
+
               </div>
+              <div>
+                <p className="pt-2 text-[17px]">
+                  {val.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Pagination */}
+        <Pagination className="my-10 flex justify-center">
+          <PaginationContent>
 
-              {AddEvent&&<div className="fixed inset-0 backdrop-blur-[1px]"><AddEventPopup onCloseEvent={onCloseEvent}/></div>}
+            {/* Previous */}
+            <PaginationItem>
+              <PaginationPrevious
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (currentPage > 1) setCurrentPage(currentPage - 1);
+                }}
+                className="transition-all duration-200 text-foreground hover:bg-muted border border-border rounded-md px-3 py-2 text-[17px]"
+              />
+            </PaginationItem>
 
-              {EditEvent&&<div className="fixed inset-0 backdrop-blur-[1px]"><EditTeacherEventComponent onCloseEvent={OnCloseEditEvent} EditData={EditData}/></div>}
-          </div>
-      )
+            {/* Page Numbers */}
+            {Array.from({ length: totalPages }, (_, idx) => (
+              <PaginationItem key={idx}>
+                <PaginationLink
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(idx + 1);
+                  }}
+                  className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 border 
+                              ${currentPage === idx + 1
+                      ? "bg-primary text-primary-foreground border-primary shadow-2xl"
+                      : "bg-background text-foreground border-border hover:bg-muted text-[17px]"
+                    }`}
+                >
+                  {idx + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+            {/* Next */}
+            <PaginationItem>
+              <PaginationNext
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+                }}
+                className="transition-all duration-200 text-foreground hover:bg-muted border border-border rounded-md px-3 py-2 text-[17px]"
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+
+      {EditEvent && <div className="fixed inset-0 backdrop-blur-[1px]"><EditTeacherEventComponent onCloseEvent={OnCloseEditEvent} EditData={EditData} /></div>}
+    </div>
+  )
 }
 
 export default TeacherEventComponent

@@ -113,34 +113,6 @@ const data = [
 
 
 const TeacherMaterialsCompoent = () => {
-  const [showAddMaterial, setShowAddMaterial] = useState(false);
-  const [materialForm,setMaterialForm]=useState({
-    CourseCode:'',
-    CourseName:'',
-    Title:'',
-    Date:'',
-    UploadDoc:''
-  })
-
-
-  const onAddMaterialClose = () => setShowAddMaterial(false);
-  const onChangeMaterial=(e)=>{
-    const {name,value}=e.target;
-    setMaterialForm({...materialForm,[name]:value});
-  }
-
-  const onFileUpload=(e)=>{
-    const {name}=e.target.files[0];
-    setMaterialForm({...materialForm,"UploadDoc":name});
-  }
-  const SubmitMaterial=(e)=>{
-    e.preventDefault();
-    try{
-      console.log(materialForm);
-    }catch(e){
-      console.log(e);
-    }
-  }
 
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -157,10 +129,6 @@ const TeacherMaterialsCompoent = () => {
       <div className="w-[80%]">
         <h1 className="font-bold text-4xl text-center underline">Materials</h1>
 
-        {/* Add Materials */}
-        <div className="pt-15">
-          <Button className="text-[18px] py-5 px-10 cursor-pointer" onClick={() => setShowAddMaterial(true)}>Add material</Button>
-        </div>
 
 
       {/* table material show */}
@@ -242,10 +210,7 @@ const TeacherMaterialsCompoent = () => {
         </div>
       </div>
 
-      {/* popup */}
-      {
-        showAddMaterial && <div className='fixed inset-0 backdrop-blur-[1px]'><AddMaterialsPopup onAddMaterialClose={onAddMaterialClose} onChangeMaterial={onChangeMaterial} SubmitMaterial={SubmitMaterial} materialForm={materialForm} onFileUpload={onFileUpload}/></div>
-      }
+     
     </div>
   )
 }

@@ -101,11 +101,9 @@ const data = [
 
 
 const TeacherNoticeComponent = () => {
-    const [AddNotice, setAddNotice] = useState(false);
     const [EditNotice, setEditNotice] = useState(false);
     const [EditData, setEditData] = useState({})
 
-    const onCloseAddNotice = () => setAddNotice(false);
     const onCloseEditNotice = () => setEditNotice(false);
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -128,12 +126,7 @@ const TeacherNoticeComponent = () => {
             <div className="w-[90%]">
                 <h1 className="font-bold text-4xl text-center underline">NOTICES</h1>
 
-
-                <div className="pt-15">
-                    <Button className="text-[18px] py-5 px-10 cursor-pointer" onClick={() => setAddNotice(true)}>Upload Notices</Button>
-                </div>
-
-
+                {/* Notice Details */}
                 <div className="my-10 flex flex-col gap-y-7">
                     {paginatedNotice.map((val, index) => (
                         <div className="bg-secondary rounded-[15px] p-5 drop-shadow-lg shadow-ring border-l- border-black" key={index}>
@@ -209,11 +202,7 @@ const TeacherNoticeComponent = () => {
                 </Pagination>
             </div>
 
-
-
-
-            {AddNotice && <div className="inset-0 fixed backdrop-blur-[1px]"><AddNoticePopup onCloseAddNotice={onCloseAddNotice} /></div>}
-
+            {/* Edit Notice */}
             {EditNotice && <div className="fixed inset-0 backdrop-blur-[1px]"><EditNoticePopup onCloseEditNotice={onCloseEditNotice} EditData={EditData} /></div>}
 
 

@@ -11,6 +11,7 @@ export default [
     route('/DepartmentAcademic', 'routes/SchoolPages/SchoolAcademicStructurePage.jsx'),
     route('/DepartmentAchivements', 'routes/SchoolPages/AchivementsPage.jsx'),
     route('/Placement', 'routes/SchoolPages/SchoolPlacementPage.jsx'),
+    route('/staff-detail', 'routes/SchoolPages/StaffDetailsPage.jsx'),
 
 
 
@@ -32,7 +33,7 @@ export default [
     route('/ExamExtenal', 'routes/StudentPages/ExamExtenal.jsx'),
 
 
-
+    
 
     // Teacher Pages
     route('/teacher-dashboard', 'routes/TeacherPage/TacherDashboard.jsx'),
@@ -45,6 +46,7 @@ export default [
     route('/mid-sem-submit', 'routes/TeacherPage/ExamInternalMarksSubmit.jsx'),
     route('/student-achievement-details', 'routes/TeacherPage/StudentAchivementDetails.jsx'),
     route('/quiz-create', 'routes/TeacherPage/QuizCreatePage.jsx'),
+    // route('/quiz-edit/:id', 'routes/TeacherPage/QuizCreatePage.jsx'),
     route('/quiz-add-question', 'routes/TeacherPage/QuizAddQuestion.jsx'),
     route('/attendance-management', 'routes/TeacherPage/AttendanceManagement.jsx'),
     route('/approve-leave', 'routes/TeacherPage/ApproveLeave.jsx'),

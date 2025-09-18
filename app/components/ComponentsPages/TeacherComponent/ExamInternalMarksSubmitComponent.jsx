@@ -34,36 +34,36 @@ const enrollmentNumbers = [
 
 
 const ExamInternalMarksSubmitComponent = () => {
-    const [Marks, setMarks] = useState({});
-    const [filterData,setFilterData]=useState({
-        sem:'',
-        ExamType:'',
-        selectBranch:''
+    const [Marks, setMarks] = useState([]);
+    const [filterData, setFilterData] = useState({
+        sem: '',
+        ExamType: '',
+        selectBranch: ''
     })
     const [InputMarks, setInputMarks] = useState({});
 
     // Filter Data
-    const onselectHandle=(e)=>{
-        const {name,value}=e;
-        console.log(name,value);
-        setFilterData({...filterData,[name]:value})
+    const onselectHandle = (e) => {
+        const { name, value } = e;
+        console.log(name, value);
+        setFilterData({ ...filterData, [name]: value })
     }
     console.log(filterData);
 
 
 
-    const GetEnrollnmentDetails=()=>{
-        try{
+    const GetEnrollnmentDetails = () => {
+        try {
 
-        }catch(e){
+        } catch (e) {
             console.log(e);
         }
     }
 
-    
+
     const MarksHandle = (e) => {
-        const {name,value}=e.target;
-        setInputMarks({...InputMarks,[name]:value});
+        const { name, value } = e.target;
+        setInputMarks({ ...InputMarks, [name]: value });
     }
 
     console.log(InputMarks);
@@ -87,7 +87,7 @@ const ExamInternalMarksSubmitComponent = () => {
                 <h1 className="font-bold text-4xl text-center underline">Examination Details</h1>
                 <div className="flex mt-18 mb-10 gap-5">
                     <div className="w-1/3 border border-black rounded-[12px]">
-                        <Select onValueChange={(e) => onselectHandle({name:'sem',value:e})} required>
+                        <Select onValueChange={(e) => onselectHandle({ name: 'sem', value: e })} required>
                             <SelectTrigger className="w-full bg-secondary ">
                                 <SelectValue placeholder="Select Sem" />
                             </SelectTrigger>
@@ -95,14 +95,14 @@ const ExamInternalMarksSubmitComponent = () => {
                                 <SelectItem value="1">1</SelectItem>
                                 <SelectItem value="2">2</SelectItem>
                                 <SelectItem value="3">3</SelectItem>
-                                <SelectItem value="3">4</SelectItem>
-                                <SelectItem value="3">5</SelectItem>
-                                <SelectItem value="3">6</SelectItem>
+                                <SelectItem value="4">4</SelectItem>
+                                <SelectItem value="5">5</SelectItem>
+                                <SelectItem value="6">6</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
                     <div className="w-1/3 border border-black rounded-[12px]">
-                        <Select onValueChange={(e) => onselectHandle({name:'ExamType',value:e})} required>
+                        <Select onValueChange={(e) => onselectHandle({ name: 'ExamType', value: e })} required>
                             <SelectTrigger className="w-full bg-secondary">
                                 <SelectValue placeholder="Select Exam Type" />
                             </SelectTrigger>
@@ -113,7 +113,7 @@ const ExamInternalMarksSubmitComponent = () => {
                         </Select>
                     </div>
                     <div className="w-1/3 border border-black rounded-[12px]">
-                        <Select onValueChange={(e) => onselectHandle({name:'selectBranch',value:e})} required>
+                        <Select onValueChange={(e) => onselectHandle({ name: 'selectBranch', value: e })} required>
                             <SelectTrigger className="w-full bg-secondary">
                                 <SelectValue placeholder="Select Branch" />
                             </SelectTrigger>
@@ -131,39 +131,42 @@ const ExamInternalMarksSubmitComponent = () => {
 
 
                 {/* All Details */}
-                <div className="grid gap-x-12 py-10 bg-card px-10 rounded-2xl drop-shadow-lg shadow-ring border border-black" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
-                    {
-                        splitColumns.map((col, colIndex) => (
-                            <div key={colIndex} className="flex flex-col gap-y-4">
-                                {col.map((val, index) => {
-                                    const number = colIndex * rowsPerColumn + index + 1;
-                                    return (
-                                        <table key={index} className="flex items-center">
-                                            <div>
-                                                <p className="text-lg font-medium">{number}. {val} : </p>
-                                            </div>
-                                            <div className="w-[28%] pl-5">
-                                                <Input className="bg-white border border-black shadow-2xl outline-none focus:outline-none focus:ring-0 focus:border-black focus-visible:ring-0 hover:border-black data-[state=open]:border-black rounded-2xl h-7.5" name={val} value={InputMarks[val]?InputMarks[val]:''} onChange={MarksHandle} type="number"/>
-                                            </div>
-                                            <div className="pl-2">
-                                                <p className="text-lg font-medium">/20</p>
-                                            </div>
-                                        </table>
-                                    )
-                                })}
-                            </div>
-                        ))
-                    }
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10 bg-card px-10 rounded-2xl drop-shadow-lg shadow-ring border border-black">
+                    {splitColumns.map((col, colIndex) => (
+                        <div key={colIndex} className="flex flex-col gap-y-4">
+                            {col.map((val, index) => {
+                                const number = colIndex * rowsPerColumn + index + 1;
+                                return (
+                                    <div key={index} className=" flex items-center justify-between w-[88%]">
+                                        <p className="text-[17px] font-medium">{number}. {val} :</p>
+                                        <div className="flex items-center space-x-1">
+                                            <Input
+                                                className="w-15 h-7 bg-white border border-black rounded-xl px-2 shadow-sm
+                                    focus:outline-none focus:ring-0 focus:border-black
+                                    hover:border-gray-700"
+                                                name={val}
+                                                value={InputMarks[val] ? InputMarks[val] : ''}
+                                                onChange={MarksHandle}
+                                                type="number"
+                                            />
+                                            <p className="text-lg font-medium">/20</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    ))}
 
-                    <div className="w-full mt-10">
-                        <Button className="w-[50%] cursor-pointer px-7">Submit</Button>
+                    <div className=" flex mt-10">
+                        <Button className="w-1/2 cursor-pointer px-7">Submit</Button>
                     </div>
                 </div>
 
 
+
             </div>
 
-             <ToastContainer />
+            <ToastContainer />
         </div>
     )
 }
