@@ -53,8 +53,7 @@ const DashBoardComponent = () => {
                                     />
                                 </div>
                             }
-
-
+                            
                         </div>
                         <div className='xl:pl-8'>
                             <h1 className='text-3xl font-bold'>John Doe !</h1>
@@ -65,9 +64,6 @@ const DashBoardComponent = () => {
                         <Button className='px-10 py-5 text-[18px] cursor-pointer' onClick={() => setEditProfile(true)}>edit</Button>
                     </div>
                 </div>
-
-
-
 
                 {/* <div className='flex justify-between mt-10 gap-5'>
                     <div className='bg-green-200 w-1/3 border py-5 px-6 border-green-800 rounded-2xl text-green-800'>
@@ -86,6 +82,7 @@ const DashBoardComponent = () => {
                         <p className='pt-1 text-[17px] font-semibold'>6</p>
                     </div>
                 </div> */}
+
 
                 <div className='flex justify-between mt-10 gap-3'>
                     {/* CGPA Card */}

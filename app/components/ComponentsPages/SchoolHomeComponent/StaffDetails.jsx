@@ -1,17 +1,16 @@
 import { LuPhone } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
-
-
-
 import profile from '../../../../public/image 14.png'
+import { useParams } from "react-router";
 
 
 
 const StaffDetails = () => {
+    const {id: staffID}=useParams();
+    console.log(staffID);
     return (
-        <div className="flex justify-center pt-8 py-8 bg-background">
+        <div className="flex justify-center py-10 bg-background">
             <div className="w-[70%]">
-
                 {/* staff profile */}
                 <div className="flex ">
                     <div className="w-[200px] h-[200px] rounded-2xl">
@@ -26,7 +25,7 @@ const StaffDetails = () => {
                 </div>
 
                 {/* staff details(Professional Biography) */}
-                <div className="pt-8">
+                <div className="pt-7">
                     <h1 className="text-lg font-bold">Professional Biography</h1>
                     <div className="text-justify">
                         <p className="pt-4">Dr. Sarah Johnson is a distinguished professor with over 15 years of experience in computer science education and research. She specializes in machine learning, artificial intelligence, and data science, with particular expertise in educational technology and ethical AI applications.</p>
@@ -41,7 +40,7 @@ const StaffDetails = () => {
                 </div>
 
                 {/* Staff Details(Area of Expertise) */}
-                <div className="py-7">
+                <div className="pt-7">
                     <h1 className="text-lg font-bold">Area of Expertise</h1>
                     <div className="text-justify">
                         <p className="pt-3">Machine Learning , Artificial Intelligence , Data Science , Web Development ,Deep Learning , Pytorch</p>
@@ -49,7 +48,7 @@ const StaffDetails = () => {
                 </div>
 
                 {/* Staff Details(Projects) */}
-                <div className="py-7">
+                <div className="pt-7">
                     <h1 className="text-lg font-bold">Projects</h1>
                     <div className="text-justify pt-4">
                        <p className="font-medium text-md">1. AI-Powered Learning Analytics Platform</p>
@@ -63,9 +62,9 @@ const StaffDetails = () => {
 
 
             {/* Staff Details(Publications) */}
-            <div>
-                <h1>Publications</h1>
-                <div>
+            <div className="pt-7">
+                <h1 className="text-lg font-bold">Publications</h1>
+                <div className="pt-3">
                     <p>"Deep Learning Approaches for Personalized Education: A Comprehensive Review"</p>
                     <p>Journal of Educational Technology Research, Vol. 45, Issue 3, 2024</p>
                     <p>Co-authored with Dr. Michael Chen and Dr. Lisa Wang</p>
@@ -75,14 +74,14 @@ const StaffDetails = () => {
 
 
             {/* Certifications and Awards */}
-            <div>
-                <h1>Certifications and Awards</h1>
-                <div>
-                    <p>1. Outstanding Faculty Award</p>
+            <div className="pt-7">
+                <h1 className="text-lg font-bold">Certifications and Awards</h1>
+                <div className="py-2">
+                    <p className="font-medium">1. Outstanding Faculty Award</p>
                     <p>Recognized for excellence in teaching, research, and service to the academic community.</p>
                 </div>
-                <div>
-                    <p>2. Best Paper Award</p>
+                <div className="py-2">
+                    <p className="font-medium">2. Best Paper Award</p>
                     <p>Awarded for the best paper at the International Conference on Machine Learning, 2023.</p>
                 </div>
             </div>

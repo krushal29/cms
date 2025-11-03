@@ -1,6 +1,7 @@
 import profile from '../../../../public/image 14.png'
 import { CiMail } from "react-icons/ci";
 import { FiPhone } from "react-icons/fi";
+import { useNavigate } from 'react-router';
 
 
 const data=[
@@ -79,6 +80,7 @@ const data=[
 ]
 
 const DepartmentStaff = () => {
+    const navigate=useNavigate();
   return (
     <div className='min-h-[45.5vh] flex justify-center py-10 bg-secondary-[80%]'>
         <div className='w-[85%]'>
@@ -87,9 +89,9 @@ const DepartmentStaff = () => {
 
             <div  className="py-15 grid grid-cols-2 gap-10 place-items-center">
                 {data.map((val,index)=>(
-                    <div key={index} className='flex bg-background drop-shadow-lg shadow-2xs shadow-ring rounded-[20px] h-[180px] w-[92%]'>
+                    <div key={index} className='flex bg-background drop-shadow-lg shadow-2xs shadow-ring rounded-[20px] h-[180px] w-[92%]' >
                     <div className='w-[38%] h-full rounded-tl-[20px] rounded-bl-[20px]'>
-                        <img src={val.img} alt="" className='w-full h-full rounded-tl-[20px] rounded-bl-[20px]' />
+                        <img src={val.img} alt="" className='w-full h-full rounded-tl-[20px] cursor-pointer rounded-bl-[20px]' onClick={()=>navigate(`/staff-detail/${val.id}`)}/>
                     </div>
                     <div className='px-4 py-1'>
                         <h1 className='text-lg font-semibold'>{val.Name}</h1>

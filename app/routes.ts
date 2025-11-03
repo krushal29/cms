@@ -11,7 +11,7 @@ export default [
     route('/DepartmentAcademic', 'routes/SchoolPages/SchoolAcademicStructurePage.jsx'),
     route('/DepartmentAchivements', 'routes/SchoolPages/AchivementsPage.jsx'),
     route('/Placement', 'routes/SchoolPages/SchoolPlacementPage.jsx'),
-    route('/staff-detail', 'routes/SchoolPages/StaffDetailsPage.jsx'),
+    route('/staff-detail/:id', 'routes/SchoolPages/StaffDetailsPage.jsx'),
 
 
 
@@ -57,8 +57,7 @@ export default [
 
 
 
-
-    // route('/ExtraPopup','components/ComponentsPages/TeacherComponent/popupComponent/EditMarksInternalVivaPopup.jsx')
+    // route('/ExtraPopup','components/ComponentsPages/TeacherComponent/popupComponent/Add_faculty.jsx'),
 
 
 
