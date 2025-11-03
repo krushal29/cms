@@ -1,6 +1,9 @@
 import profile from '../../../../public/Avatar.png'
 import { useState } from 'react';
 import { Button } from '../../ui/button';
+import { Label } from '../../ui/label';
+import { Input } from '../../ui/input'
+import { RiUserAddFill } from "react-icons/ri";
 import { FaGraduationCap, FaTrophy } from "react-icons/fa";
 import { LuCalendarCheck2 } from "react-icons/lu";
 import PersonalDetails from './popup/PersonalDetails';
